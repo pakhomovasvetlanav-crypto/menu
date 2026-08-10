@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Меню на август · EGGHEADS</title>
+  <style id="eh-logo-style">
+.eh-logo{--eh-ink:#000;--eh-accent:#FF0000;--eh-ink-60:#666;--eh-font:'Helvetica Neue',Arial,sans-serif;--eh-ease:cubic-bezier(.2,.8,.2,1);display:inline-flex;align-items:center;gap:10px;position:relative;text-decoration:none;color:var(--eh-ink);-webkit-tap-highlight-color:transparent}
+.eh-logo--invert{--eh-ink:#fff;--eh-ink-60:rgba(255,255,255,.6)}
+.eh-head{position:relative;width:24px;height:24px;flex:0 0 24px;display:block;overflow:visible}
+.eh-head svg{width:100%;height:100%;display:block;overflow:visible;fill:var(--eh-ink);transform-origin:50% 50%}
+.eh-logo:hover .eh-head svg{animation:eh-spin .72s var(--eh-ease) both}
+@keyframes eh-spin{0%{transform:rotate(0deg)}68%{transform:rotate(372deg)}84%{transform:rotate(354deg)}100%{transform:rotate(360deg)}}
+.eh-head.is-burnout{animation:eh-drive 1.7s cubic-bezier(.4,0,.22,1) forwards;z-index:60}
+.eh-head.is-burnout svg{animation:eh-wheel 1.7s cubic-bezier(.4,0,.22,1) forwards !important}
+@keyframes eh-wheel{0%{transform:rotate(0)}7%{transform:rotate(-34deg)}20%{transform:rotate(-22deg)}100%{transform:rotate(2160deg)}}
+@keyframes eh-drive{0%{transform:translateX(0)}7%{transform:translateX(-9px)}20%{transform:translateX(-9px)}80%{opacity:1}100%{transform:translateX(680px);opacity:0}}
+.eh-smoke{position:absolute;left:4px;bottom:0;border-radius:50%;background:rgba(0,0,0,.16);pointer-events:none;z-index:59}
+.eh-logo--invert .eh-smoke{background:rgba(255,255,255,.22)}
+@keyframes eh-smoke{0%{opacity:.34;transform:translate(0,0) scale(.35)}100%{opacity:0;transform:translate(-48px,-20px) scale(1.7)}}
+@media (prefers-reduced-motion:reduce){.eh-logo:hover .eh-head svg,.eh-head.is-burnout,.eh-head.is-burnout svg{animation:none !important}}
+.eh-text{display:flex;align-items:flex-end;min-width:0}
+.eh-wordmark{height:20px;width:auto;display:block;flex:0 0 auto;fill:var(--eh-ink)}
+.eh-div{width:2px;height:18px;background:var(--eh-ink);opacity:.5;display:block;flex:0 0 auto;margin:0 16px}
+.eh-tag{font-family:var(--eh-font);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--eh-ink-60);white-space:nowrap}
+  </style>
+  <style>
+:root {
+  --page-bg: #f5f5f7;
+  --surface: #ffffff;
+  --hero-from: #fafafa;
+  --hero-to: #f0f0f5;
+  --card-bg: #ffffff;
+  --text: #1d1d1f;
+  --muted: #666;
+  --muted-light: #86868b;
+  --border: #e5e5e5;
+  --accent: #FF0000;
+  --dark: #1d1d1f;
+  --shadow: 0 4px 24px rgba(0,0,0,.06);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,.12);
+  --button-secondary: #f5f5f7;
+  --button-secondary-hover: #e8e8ed;
+}
+[data-theme="dark"] {
+  --page-bg: #0f1014;
+  --surface: #181a20;
+  --hero-from: #181a20;
+  --hero-to: #111217;
+  --card-bg: #181a20;
+  --text: #f5f5f7;
+  --muted: #c7c7cf;
+  --muted-light: #a6a6ad;
+  --border: rgba(255,255,255,.12);
+  --accent: #FF0000;
+  --dark: #f5f5f7;
+  --shadow: 0 4px 24px rgba(0,0,0,.28);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,.42);
+  --button-secondary: #23252d;
+  --button-secondary-hover: #2b2e38;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:var(--page-bg);color:var(--text);font-family:'Helvetica Neue',Arial,sans-serif;transition:background .25s ease,color .25s ease;overflow-x:hidden}
+a{color:inherit}
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 28px;position:sticky;top:0;z-index:100;transition:background .25s ease,border-color .25s ease}
+.header-inner{width:min(1180px,100%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.site-header .eh-head{width:28px;height:28px;flex-basis:28px}
+.site-header .eh-wordmark{height:22px}
+.site-header .eh-div{height:20px;margin:0 12px}
+.site-header .eh-tag{font-size:11px}
+[data-theme="dark"] .site-header .eh-logo{--eh-ink:#fff;--eh-ink-60:rgba(255,255,255,.6)}
+.header-right{display:flex;align-items:center;justify-content:flex-end;gap:18px;min-width:0}
+.header-meta{text-align:right;min-width:0}
+.header-title{font-size:15px;font-weight:800;letter-spacing:0;white-space:nowrap}
+.header-sub{margin-top:3px;font-size:12px;color:var(--muted-light);white-space:nowrap}
+.theme-toggle{appearance:none;border:1px solid var(--border);background:var(--button-secondary);color:var(--text);border-radius:999px;padding:8px 12px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:700 13px/1 'Helvetica Neue',Arial,sans-serif;transition:background .2s ease,border-color .2s ease,transform .2s ease;white-space:nowrap}
+.theme-toggle:hover{background:var(--button-secondary-hover);transform:translateY(-1px)}
+.theme-toggle:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 38%,transparent);outline-offset:3px}
+.theme-toggle-icon{width:17px;display:inline-flex;justify-content:center}
+.report-main{width:min(1180px,calc(100% - 56px));margin:0 auto;padding:32px 0 48px}
+.report-section{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:24px;margin:0 0 20px}
+.site-footer{background:#111114;color:#fff;padding:34px 32px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-inner{width:min(1180px,100%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.site-footer .eh-head{width:28px;height:28px;flex-basis:28px}
+.site-footer .eh-wordmark{height:22px}
+.footer-note{color:rgba(255,255,255,.66);font-size:13px;text-align:right}
+@media (max-width:980px){
+  .site-header .eh-tag,.site-header .eh-div{display:none}
+  .header-sub{display:none}
+}
+@media (max-width:640px){
+  .site-header{padding:18px}
+  .header-inner{gap:14px;align-items:flex-start}
+  .site-header .eh-head{width:28px;height:28px;flex-basis:28px}
+  .site-header .eh-wordmark{height:21px;max-width:148px}
+  .header-right{gap:10px;flex-direction:column;align-items:flex-end}
+  .header-title{font-size:13px}
+  .theme-toggle{padding:7px 10px;font-size:12px}
+  .report-main{width:min(100% - 32px,420px);padding:24px 0 36px}
+  .report-section{padding:18px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .site-footer .eh-tag,.site-footer .eh-div{display:none}
+  .footer-note{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;transition-duration:.01ms !important}
+}
+  </style>
+
+    <style>
+      .menu-hero{position:relative;overflow:hidden;padding:30px;background:linear-gradient(125deg,#3b291f 0%,#684735 62%,#8a6245 100%);color:#fff;border-radius:16px;box-shadow:0 16px 40px rgba(59,41,31,.24);margin-bottom:20px}
+      .menu-hero:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-110px;top:-190px;background:radial-gradient(circle,rgba(244,212,166,.34),rgba(244,212,166,0) 68%)}
+      .menu-hero:after{content:"";position:absolute;width:225px;height:225px;border:1px solid rgba(255,255,255,.16);border-radius:50%;right:6%;bottom:-128px}
+      .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:30px;align-items:center}
+      .menu-hero .eyebrow,.week-heading .eyebrow{display:block;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.12em}
+      .menu-hero .eyebrow{color:#f3d6a6;margin-bottom:10px}.menu-hero h1{margin:0;font-size:clamp(28px,4vw,44px);letter-spacing:-.045em;line-height:1.04;max-width:660px}.menu-hero p{max-width:620px;margin:15px 0 0;font-size:16px;line-height:1.5;color:rgba(255,255,255,.82)}
+      .hero-legend{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.legend-item{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700}.legend-item b{color:#f8d79a;font-size:15px}
+      .hero-summary{background:rgba(255,248,238,.12);border:1px solid rgba(255,247,233,.22);border-radius:14px;padding:18px;backdrop-filter:blur(10px)}.hero-summary__top{font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#f2dfbe}.summary-stat{display:flex;align-items:baseline;gap:11px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16)}.summary-stat:last-child{border-bottom:0;padding-bottom:2px}.summary-stat b{font-size:30px;line-height:1;color:#f7cf8d}.summary-stat span{font-size:13px;color:rgba(255,255,255,.82)}
+      .filter-section{padding:14px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.filter-label{font-size:13px;color:var(--muted);font-weight:700}.week-filter{display:flex;gap:8px;flex-wrap:wrap}.filter-button{border:1px solid var(--border);background:var(--button-secondary);color:var(--text);border-radius:999px;padding:8px 13px;font:700 13px/1 'Helvetica Neue',Arial,sans-serif;cursor:pointer;transition:.2s ease}.filter-button:hover{transform:translateY(-1px);border-color:#aa8064}.filter-button.is-active{background:#734b36;border-color:#734b36;color:#fff}
+      .week-block{margin:28px 0 0}.week-heading{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin:0 0 12px}.week-heading .eyebrow{color:#8a5b40;margin-bottom:4px}.week-heading h2{font-size:21px;letter-spacing:-.025em;margin:0}.week-count{font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:7px 10px;white-space:nowrap}
+      .day-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.day-card{background:var(--card-bg);border:1px solid var(--border);border-radius:13px;overflow:hidden;box-shadow:0 3px 14px rgba(66,43,28,.07);display:flex;flex-direction:column;min-width:0;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}.day-card:hover{transform:translateY(-3px);box-shadow:0 14px 25px rgba(66,43,28,.14);border-color:#c7a383}.day-card__head{padding:13px 13px 12px;background:linear-gradient(130deg,#f7eddf,#f3e6d4);display:flex;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid #ead4b9}.day-card__head>div{display:grid;gap:2px}.day-name{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7b5b45;font-weight:800}.day-card__head strong{font-size:15px;color:#4f3527}.date-chip{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:#fffaf2;color:#734b36;font-weight:800;font-size:11px;box-shadow:0 2px 6px rgba(66,43,28,.1)}
+      .meal-list{padding:4px 13px 10px;display:grid;gap:0}.meal{display:grid;grid-template-columns:23px minmax(0,1fr);gap:8px;padding:11px 0;border-bottom:1px solid var(--border)}.meal:last-child{border-bottom:0}.meal-icon{width:22px;height:22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}.meal--morning .meal-icon{background:#f8e6bd;color:#9a6512}.meal--daytime .meal-icon{background:#f0ded0;color:#88523a}.meal--evening .meal-icon{background:#e8ddd6;color:#725040}.meal-content{min-width:0}.meal-label{display:block;font-size:10px;font-weight:800;color:var(--muted-light);text-transform:uppercase;letter-spacing:.055em;margin-bottom:3px}.meal p{margin:0;font-size:12.5px;line-height:1.35;color:var(--text);overflow-wrap:anywhere}
+      .method-note{display:flex;gap:12px;align-items:flex-start;margin-top:26px;padding:16px 18px;background:var(--button-secondary);border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:13px;line-height:1.45}.method-note__mark{flex:0 0 25px;width:25px;height:25px;background:#edddce;color:#734b36;border-radius:50%;display:grid;place-items:center;font-weight:900}
+      [data-theme="dark"] .day-card__head{background:linear-gradient(130deg,#3b2a22,#4a3429);border-color:#725040}[data-theme="dark"] .day-card__head strong{color:#f5f5f7}[data-theme="dark"] .day-name{color:#ebcdaa}[data-theme="dark"] .date-chip{background:#49352b;color:#f1c792}[data-theme="dark"] .meal--morning .meal-icon{background:#4d3718;color:#f6cb77}[data-theme="dark"] .meal--daytime .meal-icon{background:#51352b;color:#efb893}[data-theme="dark"] .meal--evening .meal-icon{background:#49332c;color:#dfbaa7}[data-theme="dark"] .method-note__mark{background:#52382e;color:#f0c9a4}
+      @media(max-width:1100px){.day-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.day-card:nth-child(n+4){margin-top:2px}}@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.hero-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.summary-stat{display:block;padding:8px 10px;border:0;border-left:1px solid rgba(255,255,255,.15)}.summary-stat:first-of-type{border-left:0}.summary-stat b{display:block;margin-bottom:5px}}@media(max-width:640px){.menu-hero{padding:22px 18px}.menu-hero h1{font-size:31px}.menu-hero p{font-size:14px}.hero-summary{grid-template-columns:1fr}.summary-stat{display:flex;align-items:baseline;gap:11px;border-left:0;border-bottom:1px solid rgba(255,255,255,.14)}.summary-stat:last-child{border-bottom:0}.summary-stat b{display:inline;margin:0}.filter-section{align-items:flex-start;flex-direction:column}.week-heading{align-items:flex-start;flex-direction:column;gap:10px}.day-grid{grid-template-columns:1fr}.day-card__head{padding:14px 15px}.meal-list{padding:4px 15px 10px}.meal p{font-size:13px}.week-count{padding:6px 9px}}
+    </style>
+</head>
+<body data-theme="light" id="top">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="eh-logo" href="#report-main" aria-label="EGGHEADS · Меню на август">
+        <span class="eh-head" aria-hidden="true">
+          <svg viewBox="0 0 512 512" focusable="false"><path d="M255.3,217c-19.1,0-34.7,15.5-34.7,34.7h69.4C289.9,232.5,274.4,217,255.3,217z"/><path d="M256,0C114.7,0,0,114.7,0,256c0,141.3,114.7,256,256,256c141.3,0,256-114.5,256-256S397.3,0,256,0z M345.8,316.3v83.2c-26.4,16.9-57.7,26.8-91.3,26.8c-94.1,0-170.3-76.2-170.3-170.3c0-94.1,76.2-170.3,170.3-170.3 c18,0,35.4,2.9,51.8,8.1l84.5,222.5H345.8z"/></svg>
+        </span>
+        <span class="eh-text">
+          <svg class="eh-wordmark" viewBox="21.69 95.83 1008.52 129.2" role="img" aria-label="EGGHEADS"><path d="M119.46,221.54H21.69V99.33H117.02v28.98H55.74v17.46h57.79v28.11H55.74v18.51h63.73v29.16Zm106.32-86.08c-8.9-8.38-19.73-10.65-27.94-10.65-19.9,0-32.82,11.87-32.82,35.79,0,15.71,8.2,35.09,32.82,35.09,6.46,0,16.59-1.22,23.57-6.28v-16.52s9.98,0,9.98,0l-9.98-26.26h28.81v54.3c-7.68,15.54-28.98,23.92-52.55,23.92-48.36,0-66.69-32.3-66.69-64.25s20.95-64.77,66.87-64.77c9.76,0,18.88,1.16,27.94,5.25,6.66,3.01,13.27,7.6,20.08,14.48l-20.08,19.9Zm131.98,0c-8.9-8.38-19.73-10.65-27.94-10.65-19.9,0-32.82,11.87-32.82,35.79,0,15.71,8.2,35.09,32.82,35.09,6.46,0,16.59-1.22,23.57-6.28v-16.52s9.98,0,9.98,0l-9.98-26.26h28.81v54.3c-7.68,15.54-28.98,23.92-52.55,23.92-48.36,0-66.69-32.3-66.69-64.25s20.95-64.77,66.87-64.77c9.76,0,18.88,1.16,27.94,5.25,6.66,3.01,13.27,7.6,20.08,14.48l-20.08,19.9Zm122.55,86.25v-46.27h-44v46.27h-34.57V99.5h34.57v46.44h44v-46.44h34.22v122.22h-34.22Zm143.68-.18h-84.69V99.33h95.33v28.98h-61.29v17.46h57.79v28.11h-57.79v18.51h63.73l-13.08,29.16Zm116.95-20.08h-54.65l-8.03,20.08h-36.67l54.82-122.22h34.92l54.65,122.22h-37.01l-8.03-20.08Zm-27.23-67.92l-15.71,38.93h31.25l-15.54-38.93Zm134.42-34.22c43.12,0,63.9,26.54,63.9,60.23s-20.08,61.98-63.9,61.98h-52.38V99.33h52.38Zm-18.16,93.06h18.16c22,0,29.68-16.41,29.68-33.17s-8.55-31.08-29.68-31.08h-18.16v64.25Zm175.63-59.19c-8.38-6.29-17.98-8.38-28.64-8.38-8.38,0-16.59,2.62-16.59,9.08,0,8.38,8.21,9.6,20.25,10.83,24.27,2.62,49.59,12.39,49.59,40.5s-26.19,39.63-53.61,39.81c-22,.17-37.71-3.67-54.65-21.48l19.03-21.82c12.05,11.7,25.49,13.79,35.79,13.79,11.35,0,19.21-4.02,19.21-10.83,0-6.11-6.98-9.95-20.43-11.17-26.71-2.45-49.76-9.25-49.76-39.63,0-25.84,25.31-37.01,51.16-37.01,18.33,0,32.65,4.19,45.74,14.49l-17.11,21.82Z"/></svg>
+          <span class="eh-div" aria-hidden="true"></span>
+          <span class="eh-tag">ЦИФРОВЫЕ СОТРУДНИКИ</span>
+        </span>
+      </a>
+      <div class="header-right">
+        <div class="header-meta">
+          <div class="header-title">Меню на август</div>
+          <div class="header-sub">11–29 августа 2026</div>
+        </div>
+        <button class="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☀</span>
+          <span class="theme-toggle-text">Светлая</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="report-main" id="report-main">
+  <section class="menu-hero" aria-labelledby="menu-title">
+    <div class="hero-grid"><div><span class="eyebrow">План питания · август 2026</span><h1 id="menu-title">Меню на август</h1><p>Завтраки, обеды и ужины на рабочие дни: со вторника по субботу. Выберите неделю, чтобы быстро сфокусироваться на нужных датах.</p><div class="hero-legend" aria-label="Приёмы пищи"><span class="legend-item"><b>☀</b> Завтрак</span><span class="legend-item"><b>◒</b> Обед</span><span class="legend-item"><b>☾</b> Ужин</span></div></div><aside class="hero-summary" aria-label="Сводка меню"><div class="hero-summary__top">Период</div><div class="summary-stat"><b>15</b><span>дней в меню</span></div><div class="summary-stat"><b>45</b><span>приёмов пищи</span></div><div class="summary-stat"><b>3</b><span>недели</span></div></aside></div>
+  </section>
+  <section class="report-section filter-section" aria-label="Фильтр по неделям"><span class="filter-label">Показать:</span><div class="week-filter" role="group" aria-label="Выбор недели"><button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Весь период</button><button class="filter-button" type="button" data-filter="1" aria-pressed="false">11–15 августа</button><button class="filter-button" type="button" data-filter="2" aria-pressed="false">18–22 августа</button><button class="filter-button" type="button" data-filter="3" aria-pressed="false">25–29 августа</button></div></section>
+  <section class="report-section" aria-label="Календарь меню"><section class="week-block" data-week-section="1" aria-labelledby="week-1">
+      <div class="week-heading"><div><span class="eyebrow">Неделя 1</span><h2 id="week-1">11 августа — 15 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div>
+      <div class="day-grid"><article class="day-card" data-week="1">
+          <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>11 августа</strong></div><span class="date-chip">11.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Гранола с йогуртом (ягодами)</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Крем-суп из цветной капусты, стейк индейки с булгуром.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Фрикасе из курицы, стручковая фасоль.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="1">
+          <header class="day-card__head"><div><span class="day-name">Среда</span><strong>12 августа</strong></div><span class="date-chip">12.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Пшено с пюре манго, тост с гуакамоле.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Минестроне, говяжьи биточки с пюре.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Рагу из овощей, филе тилапии.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="1">
+          <header class="day-card__head"><div><span class="day-name">Четверг</span><strong>13 августа</strong></div><span class="date-chip">13.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Оладьи из кабачков, слабосолёный лосось, руккола.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Борщ, картофель беби с бифштексом по-хорватски.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Паста Альфредо, свежие овощи</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="1">
+          <header class="day-card__head"><div><span class="day-name">Пятница</span><strong>14 августа</strong></div><span class="date-chip">14.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Овсянка с арахисовой пастой, слайсы ветчины из индейки, гауда, пармезан.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Уха по-фински, гречка и шницель, коул-слоу.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Овощи на пару, индейка в сливочном соусе.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="1">
+          <header class="day-card__head"><div><span class="day-name">Суббота</span><strong>15 августа</strong></div><span class="date-chip">15.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Ягодный смузи, яичница-глазунья с творожным сыром.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Турецкий чечевичный суп, картофельная запеканка.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Киноа с креветками в томатном соусе.</p></div>
+    </div></div>
+        </article></div>
+    </section><section class="week-block" data-week-section="2" aria-labelledby="week-2">
+      <div class="week-heading"><div><span class="eyebrow">Неделя 2</span><h2 id="week-2">18 августа — 22 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div>
+      <div class="day-grid"><article class="day-card" data-week="2">
+          <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>18 августа</strong></div><span class="date-chip">18.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Полента с курагой, французские гренки.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Охотничий суп, дикий рис, говяжьи медальоны.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Батат, хек со сливочной шапкой</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="2">
+          <header class="day-card__head"><div><span class="day-name">Среда</span><strong>19 августа</strong></div><span class="date-chip">19.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Сырники(допы)</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Тайский суп с кокосовым молоком, рис гохан с курицей</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Драники с мочанкой.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="2">
+          <header class="day-card__head"><div><span class="day-name">Четверг</span><strong>20 августа</strong></div><span class="date-chip">20.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Венские вафли, песто и вяленые томаты.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Сырный суп с курицей, брокколи и мини-морковью, рваное мясо.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Митболы с цукини и баклажаном</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="2">
+          <header class="day-card__head"><div><span class="day-name">Пятница</span><strong>21 августа</strong></div><span class="date-chip">21.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Шакшука с ржаным хлебом</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Куриная классика, утка конфи с квашеной капустой.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Паста Болоньезе</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="2">
+          <header class="day-card__head"><div><span class="day-name">Суббота</span><strong>22 августа</strong></div><span class="date-chip">22.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Творожная запеканка с карамелизированным бананом.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Том-ям, картофель по-деревенски, стейк из форели.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Банош с индейкой</p></div>
+    </div></div>
+        </article></div>
+    </section><section class="week-block" data-week-section="3" aria-labelledby="week-3">
+      <div class="week-heading"><div><span class="eyebrow">Неделя 3</span><h2 id="week-3">25 августа — 29 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div>
+      <div class="day-grid"><article class="day-card" data-week="3">
+          <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>25 августа</strong></div><span class="date-chip">25.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Гречневые хлопья, свежие фрукты</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Кабачковый крем-суп, фаршированный перец.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Чахохбили</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="3">
+          <header class="day-card__head"><div><span class="day-name">Среда</span><strong>26 августа</strong></div><span class="date-chip">26.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Овощная кесадилья со скрэмблом.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Лохикейтто, ленивые отбивные.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Фалафель с соусом дзадзики.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="3">
+          <header class="day-card__head"><div><span class="day-name">Четверг</span><strong>27 августа</strong></div><span class="date-chip">27.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Суфле-панкейки.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Тыквенный крем-суп, котлеты с сыром.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Кюфте с картофельным пюре.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="3">
+          <header class="day-card__head"><div><span class="day-name">Пятница</span><strong>28 августа</strong></div><span class="date-chip">28.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Смузи-боул с бананом и ягодами.</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Рассольник, говяжий гуляш с рисом басмати.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Запечённая треска с овощами.</p></div>
+    </div></div>
+        </article><article class="day-card" data-week="3">
+          <header class="day-card__head"><div><span class="day-name">Суббота</span><strong>29 августа</strong></div><span class="date-chip">29.08</span></header>
+          <div class="meal-list"><div class="meal meal--morning">
+      <span class="meal-icon" aria-hidden="true">☀</span>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Омлет с шпинатом и грибами</p></div>
+    </div>
+<div class="meal meal--daytime">
+      <span class="meal-icon" aria-hidden="true">◒</span>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Ревифья, гребешок и кальмар со спаржей.</p></div>
+    </div>
+<div class="meal meal--evening">
+      <span class="meal-icon" aria-hidden="true">☾</span>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Вителло тоннато из телятины, салат-микс (вишнёвая заправка).</p></div>
+    </div></div>
+        </article></div>
+    </section><div class="method-note"><span class="method-note__mark" aria-hidden="true">i</span><span>Источник блюд — предоставленная таблица. Воскресенье и понедельник сознательно не включены; меню заканчивается в субботу, 29 августа.</span></div></section>
+</main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="eh-logo eh-logo--invert" href="#top" aria-label="EGGHEADS · Меню на август">
+        <span class="eh-head" aria-hidden="true">
+          <svg viewBox="0 0 512 512" focusable="false"><path d="M255.3,217c-19.1,0-34.7,15.5-34.7,34.7h69.4C289.9,232.5,274.4,217,255.3,217z"/><path d="M256,0C114.7,0,0,114.7,0,256c0,141.3,114.7,256,256,256c141.3,0,256-114.5,256-256S397.3,0,256,0z M345.8,316.3v83.2c-26.4,16.9-57.7,26.8-91.3,26.8c-94.1,0-170.3-76.2-170.3-170.3c0-94.1,76.2-170.3,170.3-170.3 c18,0,35.4,2.9,51.8,8.1l84.5,222.5H345.8z"/></svg>
+        </span>
+        <span class="eh-text">
+          <svg class="eh-wordmark" viewBox="21.69 95.83 1008.52 129.2" role="img" aria-label="EGGHEADS"><path d="M119.46,221.54H21.69V99.33H117.02v28.98H55.74v17.46h57.79v28.11H55.74v18.51h63.73v29.16Zm106.32-86.08c-8.9-8.38-19.73-10.65-27.94-10.65-19.9,0-32.82,11.87-32.82,35.79,0,15.71,8.2,35.09,32.82,35.09,6.46,0,16.59-1.22,23.57-6.28v-16.52s9.98,0,9.98,0l-9.98-26.26h28.81v54.3c-7.68,15.54-28.98,23.92-52.55,23.92-48.36,0-66.69-32.3-66.69-64.25s20.95-64.77,66.87-64.77c9.76,0,18.88,1.16,27.94,5.25,6.66,3.01,13.27,7.6,20.08,14.48l-20.08,19.9Zm131.98,0c-8.9-8.38-19.73-10.65-27.94-10.65-19.9,0-32.82,11.87-32.82,35.79,0,15.71,8.2,35.09,32.82,35.09,6.46,0,16.59-1.22,23.57-6.28v-16.52s9.98,0,9.98,0l-9.98-26.26h28.81v54.3c-7.68,15.54-28.98,23.92-52.55,23.92-48.36,0-66.69-32.3-66.69-64.25s20.95-64.77,66.87-64.77c9.76,0,18.88,1.16,27.94,5.25,6.66,3.01,13.27,7.6,20.08,14.48l-20.08,19.9Zm122.55,86.25v-46.27h-44v46.27h-34.57V99.5h34.57v46.44h44v-46.44h34.22v122.22h-34.22Zm143.68-.18h-84.69V99.33h95.33v28.98h-61.29v17.46h57.79v28.11h-57.79v18.51h63.73l-13.08,29.16Zm116.95-20.08h-54.65l-8.03,20.08h-36.67l54.82-122.22h34.92l54.65,122.22h-37.01l-8.03-20.08Zm-27.23-67.92l-15.71,38.93h31.25l-15.54-38.93Zm134.42-34.22c43.12,0,63.9,26.54,63.9,60.23s-20.08,61.98-63.9,61.98h-52.38V99.33h52.38Zm-18.16,93.06h18.16c22,0,29.68-16.41,29.68-33.17s-8.55-31.08-29.68-31.08h-18.16v64.25Zm175.63-59.19c-8.38-6.29-17.98-8.38-28.64-8.38-8.38,0-16.59,2.62-16.59,9.08,0,8.38,8.21,9.6,20.25,10.83,24.27,2.62,49.59,12.39,49.59,40.5s-26.19,39.63-53.61,39.81c-22,.17-37.71-3.67-54.65-21.48l19.03-21.82c12.05,11.7,25.49,13.79,35.79,13.79,11.35,0,19.21-4.02,19.21-10.83,0-6.11-6.98-9.95-20.43-11.17-26.71-2.45-49.76-9.25-49.76-39.63,0-25.84,25.31-37.01,51.16-37.01,18.33,0,32.65,4.19,45.74,14.49l-17.11,21.82Z"/></svg>
+          <span class="eh-div" aria-hidden="true"></span>
+          <span class="eh-tag">ЦИФРОВЫЕ СОТРУДНИКИ</span>
+        </span>
+      </a>
+      <div class="footer-note">Меню на 11–29 августа 2026 · вторник — суббота</div>
+    </div>
+  </footer>
+
+  <script>
+(function(){
+  var root=document.documentElement;
+  var body=document.body;
+  var button=document.querySelector('.theme-toggle');
+  var icon=document.querySelector('.theme-toggle-icon');
+  var text=document.querySelector('.theme-toggle-text');
+  var currentTheme='light';
+  try{var savedTheme=localStorage.getItem('eggheads-theme');if(savedTheme==='dark'||savedTheme==='light')currentTheme=savedTheme}catch(error){}
+  function applyTheme(theme){
+    root.setAttribute('data-theme',theme);
+    body.setAttribute('data-theme',theme);
+    if(button)button.setAttribute('aria-pressed',String(theme==='dark'));
+    if(icon)icon.textContent=theme==='dark'?'☾':'☀';
+    if(text)text.textContent=theme==='dark'?'Тёмная':'Светлая';
+    try{localStorage.setItem('eggheads-theme',theme)}catch(error){}
+  }
+  applyTheme(currentTheme);
+  if(button)button.addEventListener('click',function(){var nextTheme=root.getAttribute('data-theme')==='dark'?'light':'dark';applyTheme(nextTheme)});
+})();
+  </script>
+  <script id="eh-logo-script">
+(function(){
+  function initLogo(logo){
+    var head=logo.querySelector('.eh-head');
+    if(!head)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var count=0,last=0,busy=false;
+    head.addEventListener('mouseenter',function(){
+      if(busy)return;
+      var now=Date.now();
+      if(now-last>1500)count=0;
+      last=now;
+      count++;
+      if(count>=2){count=0;burnout()}
+    });
+    function puffs(){
+      for(var i=0;i<7;i++){
+        var s=document.createElement('span');
+        s.className='eh-smoke';
+        var sz=7+Math.random()*11;
+        s.style.width=sz+'px';
+        s.style.height=sz+'px';
+        s.style.left=(3+Math.random()*11)+'px';
+        s.style.bottom=(Math.random()*7)+'px';
+        s.style.animation='eh-smoke '+(0.8+Math.random()*0.4).toFixed(2)+'s ease-out forwards';
+        s.style.animationDelay=(i*55)+'ms';
+        logo.appendChild(s);
+        (function(node){setTimeout(function(){node.remove()},1400+i*55)})(s);
+      }
+    }
+    function burnout(){
+      busy=true;
+      head.classList.add('is-burnout');
+      puffs();
+      setTimeout(puffs,150);
+      var done=function(){head.classList.remove('is-burnout');busy=false;head.removeEventListener('animationend',done)};
+      head.addEventListener('animationend',done);
+      setTimeout(function(){if(busy){head.classList.remove('is-burnout');busy=false}},2200);
+    }
+  }
+  document.querySelectorAll('.eh-logo').forEach(initLogo);
+})();
+  </script>
+
+  <script>
+  (function(){
+    var buttons=document.querySelectorAll('[data-filter]');
+    var weeks=document.querySelectorAll('[data-week-section]');
+    buttons.forEach(function(button){button.addEventListener('click',function(){
+      var selected=button.getAttribute('data-filter');
+      buttons.forEach(function(item){var active=item===button;item.classList.toggle('is-active',active);item.setAttribute('aria-pressed',String(active));});
+      weeks.forEach(function(week){week.hidden=selected!=='all'&&week.getAttribute('data-week-section')!==selected;});
+    });});
+  })();
+  </script>
+</body>
+</html>
