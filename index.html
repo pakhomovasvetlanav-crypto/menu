@@ -125,6 +125,52 @@ a{color:inherit}
       [data-theme="dark"] .day-card__head{background:linear-gradient(130deg,#3b2a22,#4a3429);border-color:#725040}[data-theme="dark"] .day-card__head strong{color:#f5f5f7}[data-theme="dark"] .day-name{color:#ebcdaa}[data-theme="dark"] .date-chip{background:#49352b;color:#f1c792}[data-theme="dark"] .meal--morning .meal-icon{background:#4d3718;color:#f6cb77}[data-theme="dark"] .meal--daytime .meal-icon{background:#51352b;color:#efb893}[data-theme="dark"] .meal--evening .meal-icon{background:#49332c;color:#dfbaa7}[data-theme="dark"] .method-note__mark{background:#52382e;color:#f0c9a4}
       @media(max-width:1100px){.day-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.day-card:nth-child(n+4){margin-top:2px}}@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.hero-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.summary-stat{display:block;padding:8px 10px;border:0;border-left:1px solid rgba(255,255,255,.15)}.summary-stat:first-of-type{border-left:0}.summary-stat b{display:block;margin-bottom:5px}}@media(max-width:640px){.menu-hero{padding:22px 18px}.menu-hero h1{font-size:31px}.menu-hero p{font-size:14px}.hero-summary{grid-template-columns:1fr}.summary-stat{display:flex;align-items:baseline;gap:11px;border-left:0;border-bottom:1px solid rgba(255,255,255,.14)}.summary-stat:last-child{border-bottom:0}.summary-stat b{display:inline;margin:0}.filter-section{align-items:flex-start;flex-direction:column}.week-heading{align-items:flex-start;flex-direction:column;gap:10px}.day-grid{grid-template-columns:1fr}.day-card__head{padding:14px 15px}.meal-list{padding:4px 15px 10px}.meal p{font-size:13px}.week-count{padding:6px 9px}}
     </style>
+
+  <style id="fermentation-note-style">
+    .fermentation-note {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      margin-top: 15px;
+      padding: 14px 16px;
+      border: 1px solid #e4c5a4;
+      border-radius: 13px;
+      background: #fcf5ea;
+      color: #5b4030;
+    }
+    .fermentation-note__icon {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #7b4e35;
+      color: #fff8ee;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .fermentation-note strong {
+      display: block;
+      color: #70452f;
+      font-size: 13px;
+      letter-spacing: .01em;
+    }
+    .fermentation-note p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    [data-theme="dark"] .fermentation-note {
+      border-color: #7f5d47;
+      background: #3a2a21;
+      color: #f5e6d4;
+    }
+    [data-theme="dark"] .fermentation-note strong { color: #f0cda7; }
+    @media (max-width: 560px) {
+      .fermentation-note { padding: 13px 14px; }
+    }
+  </style>
 </head>
 <body data-theme="light" id="top">
   <header class="site-header">
@@ -157,7 +203,15 @@ a{color:inherit}
     <div class="hero-grid"><div><span class="eyebrow">План питания · август 2026</span><h1 id="menu-title">Меню на август</h1><p>Завтраки, обеды и ужины на рабочие дни: со вторника по субботу. Выберите неделю, чтобы быстро сфокусироваться на нужных датах.</p><div class="hero-legend" aria-label="Приёмы пищи"><span class="legend-item"><b>☀</b> Завтрак</span><span class="legend-item"><b>◒</b> Обед</span><span class="legend-item"><b>☾</b> Ужин</span></div></div><aside class="hero-summary" aria-label="Сводка меню"><div class="hero-summary__top">Период</div><div class="summary-stat"><b>15</b><span>дней в меню</span></div><div class="summary-stat"><b>45</b><span>приёмов пищи</span></div><div class="summary-stat"><b>3</b><span>недели</span></div></aside></div>
   </section>
   <section class="report-section filter-section" aria-label="Фильтр по неделям"><span class="filter-label">Показать:</span><div class="week-filter" role="group" aria-label="Выбор недели"><button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Весь период</button><button class="filter-button" type="button" data-filter="1" aria-pressed="false">11–15 августа</button><button class="filter-button" type="button" data-filter="2" aria-pressed="false">18–22 августа</button><button class="filter-button" type="button" data-filter="3" aria-pressed="false">25–29 августа</button></div></section>
-  <section class="report-section" aria-label="Календарь меню"><section class="week-block" data-week-section="1" aria-labelledby="week-1"><div class="week-heading"><div><span class="eyebrow">Неделя 1</span><h2 id="week-1">11 августа — 15 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div><div class="day-grid"><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Вторник</span><strong>11 августа</strong></div><span class="date-chip">11.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Кокосовые сырники.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Крем-суп из цветной капусты, стейк индейки с бурым рисом.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Фрикасе из курицы, стручковая фасоль. Яблочный компот.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Среда</span><strong>12 августа</strong></div><span class="date-chip">12.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Пшено с пюре из манго, тост с гуакамоле.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Минестроне, говяжьи биточки с толчёным картофелем. Овощной салат с кунжутом.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Рагу из овощей, филе тилапии, брусничный морс.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Четверг</span><strong>13 августа</strong></div><span class="date-chip">13.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Оладьи из кабачков, слабосолёный лосось, руккола.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Борщ, картофель беби с бифштексом по-хорватски.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Паста «Альфредо» (альтернативная), квас из солода.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Пятница</span><strong>14 августа</strong></div><span class="date-chip">14.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Овсяные хлопья с арахисовой пастой, слайсы ветчины из индейки, пармезан, микс-салат.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Уха по-фински, гречка и шницель, коул-слоу, клюквенный морс.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Овощи на пару, морепродукты в кисло-сладком соусе.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Суббота</span><strong>15 августа</strong></div><span class="date-chip">15.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Ягодный смузи без лактозы, яичница-глазунья с творожным сыром.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Турецкий чечевичный суп, картофельная запеканка. Компот из сухофруктов.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Киноа с креветками в томатном соусе.</p></div></div></div></article></div></section><section class="week-block" data-week-section="2" aria-labelledby="week-2">
+  <section class="report-section" aria-label="Календарь меню"><section class="week-block" data-week-section="1" aria-labelledby="week-1"><div class="week-heading"><div><span class="eyebrow">Неделя 1</span><h2 id="week-1">11 августа — 15 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div><div class="day-grid"><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Вторник</span><strong>11 августа</strong></div><span class="date-chip">11.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Кокосовые сырники.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Крем-суп из цветной капусты, стейк индейки с бурым рисом.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Фрикасе из курицы, стручковая фасоль. Яблочный компот.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Среда</span><strong>12 августа</strong></div><span class="date-chip">12.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Пшено с пюре из манго, тост с гуакамоле.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Минестроне, говяжьи биточки с толчёным картофелем. Овощной салат с кунжутом.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Рагу из овощей, филе тилапии, брусничный морс.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Четверг</span><strong>13 августа</strong></div><span class="date-chip">13.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Оладьи из кабачков, слабосолёный лосось, руккола.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Борщ, картофель беби с бифштексом по-хорватски.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Паста «Альфредо» (альтернативная), квас из солода.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Пятница</span><strong>14 августа</strong></div><span class="date-chip">14.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Овсяные хлопья с арахисовой пастой, слайсы ветчины из индейки, пармезан, микс-салат.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Уха по-фински, гречка и шницель, коул-слоу, клюквенный морс.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Овощи на пару, морепродукты в кисло-сладком соусе.</p></div></div></div></article><article class="day-card" data-week="1"><header class="day-card__head"><div><span class="day-name">Суббота</span><strong>15 августа</strong></div><span class="date-chip">15.08</span></header><div class="meal-list"><div class="meal meal--morning"><span class="meal-icon" aria-hidden="true">☀</span><div class="meal-content"><span class="meal-label">Завтрак</span><p>Ягодный смузи без лактозы, яичница-глазунья с творожным сыром.</p></div></div><div class="meal meal--daytime"><span class="meal-icon" aria-hidden="true">◒</span><div class="meal-content"><span class="meal-label">Обед</span><p>Турецкий чечевичный суп, картофельная запеканка. Компот из сухофруктов.</p></div></div><div class="meal meal--evening"><span class="meal-icon" aria-hidden="true">☾</span><div class="meal-content"><span class="meal-label">Ужин</span><p>Киноа с креветками в томатном соусе.</p></div></div></div></article></div>
+      <aside class="fermentation-note" aria-label="Ферментированные продукты">
+        <span class="fermentation-note__icon" aria-hidden="true">◌</span>
+        <div>
+          <strong>Ферментированные продукты в течение недели</strong>
+          <p>В меню будут добавляться: квашеная капуста, кимчи, мочёные яблоки, квашеные помидоры с горчицей и квашеный дайкон.</p>
+        </div>
+      </aside>
+    </section><section class="week-block" data-week-section="2" aria-labelledby="week-2">
       <div class="week-heading"><div><span class="eyebrow">Неделя 2</span><h2 id="week-2">18 августа — 22 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div>
       <div class="day-grid"><article class="day-card" data-week="2">
           <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>18 августа</strong></div><span class="date-chip">18.08</span></header>
@@ -230,6 +284,14 @@ a{color:inherit}
       <div class="meal-content"><span class="meal-label">Ужин</span><p>Банош с индейкой</p></div>
     </div></div>
         </article></div>
+    
+      <aside class="fermentation-note" aria-label="Ферментированные продукты">
+        <span class="fermentation-note__icon" aria-hidden="true">◌</span>
+        <div>
+          <strong>Ферментированные продукты в течение недели</strong>
+          <p>В меню будут добавляться: квашеная капуста, кимчи, мочёные яблоки, квашеные помидоры с горчицей и квашеный дайкон.</p>
+        </div>
+      </aside>
     </section><section class="week-block" data-week-section="3" aria-labelledby="week-3">
       <div class="week-heading"><div><span class="eyebrow">Неделя 3</span><h2 id="week-3">25 августа — 29 августа</h2></div><span class="week-count">5 дней · 15 блюд</span></div>
       <div class="day-grid"><article class="day-card" data-week="3">
@@ -303,6 +365,14 @@ a{color:inherit}
       <div class="meal-content"><span class="meal-label">Ужин</span><p>Вителло тоннато из телятины, салат-микс (вишнёвая заправка).</p></div>
     </div></div>
         </article></div>
+    
+      <aside class="fermentation-note" aria-label="Ферментированные продукты">
+        <span class="fermentation-note__icon" aria-hidden="true">◌</span>
+        <div>
+          <strong>Ферментированные продукты в течение недели</strong>
+          <p>В меню будут добавляться: квашеная капуста, кимчи, мочёные яблоки, квашеные помидоры с горчицей и квашеный дайкон.</p>
+        </div>
+      </aside>
     </section><div class="method-note"><span class="method-note__mark" aria-hidden="true">i</span><span>Источник блюд — предоставленная таблица. Воскресенье и понедельник сознательно не включены; меню заканчивается в субботу, 29 августа.</span></div></section>
 </main>
 
