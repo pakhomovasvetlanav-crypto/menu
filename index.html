@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Меню на август · EGGHEADS</title>
+  <title>Меню и закупки · август 2026</title>
   <style id="eh-logo-style">
 .eh-logo{--eh-ink:#000;--eh-accent:#FF0000;--eh-ink-60:#666;--eh-font:'Helvetica Neue',Arial,sans-serif;--eh-ease:cubic-bezier(.2,.8,.2,1);display:inline-flex;align-items:center;gap:10px;position:relative;text-decoration:none;color:var(--eh-ink);-webkit-tap-highlight-color:transparent}
 .eh-logo--invert{--eh-ink:#fff;--eh-ink-60:rgba(255,255,255,.6)}
@@ -171,6 +171,122 @@ a{color:inherit}
       .fermentation-note { padding: 13px 14px; }
     }
   </style>
+
+<style id="procurement-style">
+  .dashboard-tabs {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 6px;
+    border: 1px solid rgba(110, 74, 45, .14);
+    border-radius: 16px;
+    background: rgba(255, 252, 246, .88);
+    box-shadow: 0 8px 22px rgba(94, 61, 39, .07);
+  }
+  .dashboard-tab {
+    flex: 1;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    background: transparent;
+    color: #6a4834;
+    cursor: pointer;
+    font: 700 .86rem/1.2 Inter, Arial, sans-serif;
+    letter-spacing: .02em;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .dashboard-tab:hover { background: #f4e9d8; }
+  .dashboard-tab[aria-selected="true"] {
+    background: #6c422d;
+    border-color: #6c422d;
+    color: #fffaf2;
+    box-shadow: 0 5px 12px rgba(91, 52, 31, .18);
+  }
+  .app-panel[hidden] { display: none !important; }
+  .procurement-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    padding: 27px 30px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(111, 75, 47, .14);
+    border-radius: 18px;
+    background: linear-gradient(122deg, #fffaf2 0%, #f5e8d6 100%);
+    box-shadow: 0 10px 26px rgba(94, 61, 39, .08);
+  }
+  .procurement-eyebrow { margin: 0 0 8px; color: #8d6349; font: 800 .72rem/1 Inter, Arial, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+  .procurement-intro h2 { margin: 0; color: #563522; font: 700 clamp(1.45rem, 2.5vw, 2.15rem)/1.13 Georgia, 'Times New Roman', serif; }
+  .procurement-intro p:last-child { max-width: 690px; margin: 10px 0 0; color: #745a49; font-size: .94rem; line-height: 1.55; }
+  .procurement-period-badge { min-width: 160px; padding: 12px 15px; border-radius: 12px; background: #6c422d; color: #fffaf2; text-align: center; }
+  .procurement-period-badge span { display: block; margin-bottom: 3px; color: #e8cda9; font: 800 .67rem/1 Inter, Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  .procurement-period-badge strong { font: 700 .96rem/1.25 Georgia, 'Times New Roman', serif; }
+  .procurement-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin: 0 0 20px; }
+  .procurement-kpi { min-height: 106px; padding: 18px 19px; border: 1px solid rgba(111, 75, 47, .13); border-radius: 15px; background: #fffdf9; box-shadow: 0 7px 18px rgba(94, 61, 39, .06); }
+  .procurement-kpi span { display: block; margin-bottom: 9px; color: #8c6a55; font: 800 .67rem/1.15 Inter, Arial, sans-serif; letter-spacing: .085em; text-transform: uppercase; }
+  .procurement-kpi strong { display: block; color: #4d3020; font: 700 clamp(1.18rem, 2.1vw, 1.65rem)/1.12 Georgia, 'Times New Roman', serif; }
+  .procurement-layout { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(0, 1.35fr); gap: 20px; align-items: start; }
+  .procurement-card { padding: 23px; border: 1px solid rgba(111, 75, 47, .14); border-radius: 17px; background: #fffdf9; box-shadow: 0 9px 22px rgba(94, 61, 39, .07); }
+  .procurement-card h3 { margin: 0; color: #563522; font: 700 1.2rem/1.2 Georgia, 'Times New Roman', serif; }
+  .procurement-card > p { margin: 8px 0 17px; color: #7c6150; font-size: .86rem; line-height: 1.5; }
+  .purchase-form { display: grid; gap: 13px; }
+  .purchase-form label, .filter-row label { display: grid; gap: 6px; color: #6d4c38; font: 700 .78rem/1.2 Inter, Arial, sans-serif; }
+  .purchase-form input, .filter-row select, .receipt-control input { width: 100%; min-height: 42px; box-sizing: border-box; padding: 9px 11px; border: 1px solid #dbc7ae; border-radius: 9px; outline: none; background: #fffcf7; color: #4d3020; font: 500 .9rem/1.2 Inter, Arial, sans-serif; }
+  .purchase-form input:focus, .filter-row select:focus { border-color: #9a6544; box-shadow: 0 0 0 3px rgba(154, 101, 68, .13); }
+  .purchase-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .purchase-form button, .receipt-label { min-height: 43px; border: 0; border-radius: 9px; background: #6c422d; color: #fffaf2; cursor: pointer; font: 800 .8rem/1 Inter, Arial, sans-serif; letter-spacing: .02em; text-align: center; transition: transform .18s ease, background .18s ease; }
+  .purchase-form button:hover, .receipt-label:hover { background: #55301e; transform: translateY(-1px); }
+  .receipt-box { margin-top: 21px; padding-top: 19px; border-top: 1px solid #eadbc9; }
+  .receipt-box h4 { margin: 0; color: #61402c; font: 800 .82rem/1.2 Inter, Arial, sans-serif; letter-spacing: .035em; }
+  .receipt-box p { margin: 7px 0 12px; color: #7e6554; font-size: .8rem; line-height: 1.45; }
+  .receipt-control input { display: none; }
+  .receipt-label { display: flex; align-items: center; justify-content: center; padding: 0 12px; }
+  .receipt-status { min-height: 18px; margin: 10px 0 0; color: #8a684f; font-size: .78rem; line-height: 1.4; }
+  .receipt-files { display: grid; gap: 5px; margin: 8px 0 0; padding: 0; list-style: none; color: #76533e; font-size: .78rem; }
+  .filter-row { display: flex; align-items: end; gap: 12px; margin: 0 0 17px; padding: 13px; border-radius: 11px; background: #f8efdf; }
+  .filter-row label { flex: 1; }
+  .date-expense { min-width: 153px; padding: 10px 12px; border-left: 3px solid #9a6544; color: #72503b; font: 700 .8rem/1.35 Inter, Arial, sans-serif; }
+  .date-expense strong { display: block; margin-top: 3px; color: #4d3020; font: 700 1.05rem/1.2 Georgia, 'Times New Roman', serif; }
+  .purchase-table-wrap { overflow-x: auto; border: 1px solid #eadbc9; border-radius: 11px; }
+  .purchase-table { width: 100%; min-width: 560px; border-collapse: collapse; color: #5c4030; font-size: .84rem; }
+  .purchase-table th { padding: 11px 12px; background: #f7eddf; color: #76533e; font: 800 .68rem/1.2 Inter, Arial, sans-serif; letter-spacing: .075em; text-align: left; text-transform: uppercase; }
+  .purchase-table td { padding: 12px; border-top: 1px solid #eee0d0; vertical-align: top; line-height: 1.4; }
+  .purchase-table td:last-child, .purchase-table th:last-child { text-align: right; white-space: nowrap; }
+  .purchase-table .empty-row { padding: 23px 12px; color: #8a6d59; font-style: italic; text-align: center; }
+  .procurement-note { margin: 14px 0 0; color: #876a57; font-size: .77rem; line-height: 1.5; }
+  .procurement-note strong { color: #684632; }
+  .form-status { min-height: 18px; margin: 0; color: #547040; font-size: .78rem; line-height: 1.35; }
+  @media (max-width: 840px) {
+    .procurement-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .procurement-layout { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 580px) {
+    .dashboard-tabs { margin-bottom: 16px; }
+    .procurement-intro { grid-template-columns: 1fr; padding: 22px 19px; }
+    .procurement-period-badge { width: auto; min-width: 0; }
+    .procurement-kpis { gap: 9px; }
+    .procurement-kpi { min-height: 93px; padding: 14px; }
+    .procurement-card { padding: 18px 15px; }
+    .purchase-form .form-row { grid-template-columns: 1fr; gap: 13px; }
+    .filter-row { display: grid; grid-template-columns: 1fr; align-items: stretch; }
+    .date-expense { min-width: 0; }
+  }
+  /* Не позволяем широкой таблице расширять страницу на мобильных устройствах. */
+  #procurement-panel,
+  .procurement-layout,
+  .procurement-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #procurement-panel { overflow-x: hidden; }
+
+  .purchase-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+</style>
 </head>
 <body data-theme="light" id="top">
   <header class="site-header">
@@ -187,7 +303,7 @@ a{color:inherit}
       </a>
       <div class="header-right">
         <div class="header-meta">
-          <div class="header-title">Меню на август</div>
+      <div class="header-title">Меню и закупки</div>
           <div class="header-sub">11–29 августа 2026</div>
         </div>
         <button class="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false">
@@ -199,6 +315,11 @@ a{color:inherit}
   </header>
 
   <main class="report-main" id="report-main">
+    <nav class="dashboard-tabs" aria-label="Разделы дашборда">
+      <button class="dashboard-tab" type="button" data-dashboard-tab="menu" aria-selected="true" aria-controls="menu-panel">Меню</button>
+      <button class="dashboard-tab" type="button" data-dashboard-tab="procurement" aria-selected="false" aria-controls="procurement-panel">Закупки и расходы</button>
+    </nav>
+    <section class="app-panel" id="menu-panel" role="tabpanel">
   <section class="menu-hero" aria-labelledby="menu-title">
     <div class="hero-grid"><div><span class="eyebrow">План питания · август 2026</span><h1 id="menu-title">Меню на август</h1><p>Завтраки, обеды и ужины на рабочие дни: со вторника по субботу. Выберите неделю, чтобы быстро сфокусироваться на нужных датах.</p><div class="hero-legend" aria-label="Приёмы пищи"><span class="legend-item"><b>☀</b> Завтрак</span><span class="legend-item"><b>◒</b> Обед</span><span class="legend-item"><b>☾</b> Ужин</span></div></div><aside class="hero-summary" aria-label="Сводка меню"><div class="hero-summary__top">Период</div><div class="summary-stat"><b>15</b><span>дней в меню</span></div><div class="summary-stat"><b>45</b><span>приёмов пищи</span></div><div class="summary-stat"><b>3</b><span>недели</span></div></aside></div>
   </section>
@@ -374,6 +495,66 @@ a{color:inherit}
         </div>
       </aside>
     </section><div class="method-note"><span class="method-note__mark" aria-hidden="true">i</span><span>Источник блюд — предоставленная таблица. Воскресенье и понедельник сознательно не включены; меню заканчивается в субботу, 29 августа.</span></div></section>
+
+    </section>
+    <section class="app-panel" id="procurement-panel" role="tabpanel" hidden>
+      <section class="procurement-intro" aria-labelledby="procurement-title">
+        <div>
+          <p class="procurement-eyebrow">Форма учёта закупок</p>
+          <h2 id="procurement-title">Расходы на продукты</h2>
+          <p>Добавляйте подтверждённые позиции из чеков: дата, продукт, поставщик и цена. Верхние показатели всегда считают весь внесённый период, а фильтр ниже помогает просмотреть конкретную дату.</p>
+        </div>
+        <div class="procurement-period-badge"><span>Период учёта</span><strong id="procurement-period-label">Нет данных</strong></div>
+      </section>
+
+      <section class="procurement-kpis" aria-label="Итоги расходов за период">
+        <article class="procurement-kpi"><span>Расходы за период</span><strong id="period-total">0 ₽</strong></article>
+        <article class="procurement-kpi"><span>Позиций учтено</span><strong id="purchase-count">0</strong></article>
+        <article class="procurement-kpi"><span>Поставщиков</span><strong id="supplier-count">0</strong></article>
+        <article class="procurement-kpi"><span>Средняя цена позиции</span><strong id="average-price">—</strong></article>
+      </section>
+
+      <section class="procurement-layout">
+        <article class="procurement-card">
+          <h3>Добавить позицию</h3>
+          <p>Вносите данные после проверки чека. Одна строка — один продукт или товарная позиция.</p>
+          <form class="purchase-form" id="purchase-form">
+            <label>Дата покупки<input id="purchase-date" type="date" required></label>
+            <label>Продукт<input id="purchase-product" type="text" maxlength="120" placeholder="Например, молоко" required></label>
+            <div class="form-row">
+              <label>Поставщик<input id="purchase-supplier" type="text" maxlength="120" placeholder="Название магазина или поставщика" required></label>
+              <label>Цена, ₽<input id="purchase-price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required></label>
+            </div>
+            <button type="submit">Добавить в отчёт</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+
+          <div class="receipt-box">
+            <h4>Прикрепить чеки</h4>
+            <p>Изображения и PDF можно добавить как ориентир для ручной сверки. Перед включением в расходы проверьте названия, поставщика и суммы.</p>
+            <div class="receipt-control"><input id="receipt-input" type="file" accept="image/*,.pdf" multiple><label class="receipt-label" for="receipt-input">Выбрать файлы чеков</label></div>
+            <p class="receipt-status" id="receipt-status">Чеки пока не выбраны.</p>
+            <ul class="receipt-files" id="receipt-files" aria-live="polite"></ul>
+          </div>
+        </article>
+
+        <article class="procurement-card">
+          <h3>Реестр закупок</h3>
+          <p>Выберите дату, чтобы просмотреть только её позиции. Итоги сверху не меняются — это расходы за весь период учёта.</p>
+          <div class="filter-row">
+            <label for="purchase-date-filter">Показать дату<select id="purchase-date-filter"><option value="all">Все даты</option></select></label>
+            <div class="date-expense">Расходы в выборке<strong id="selected-date-total">0 ₽</strong></div>
+          </div>
+          <div class="purchase-table-wrap">
+            <table class="purchase-table">
+              <thead><tr><th scope="col">Дата</th><th scope="col">Продукт</th><th scope="col">Поставщик</th><th scope="col">Цена</th></tr></thead>
+              <tbody id="purchase-table-body"><tr><td class="empty-row" colspan="4">Пока нет данных. Добавьте позицию вручную или приложите чек для последующей сверки.</td></tr></tbody>
+            </table>
+          </div>
+          <p class="procurement-note"><strong>Важно:</strong> внесённые позиции сохраняются в текущем браузере; выбранные файлы чеков доступны только до закрытия страницы. Для общего постоянного хранения и автоматического разбора чеков потребуется подключить защищённое хранилище.</p>
+        </article>
+      </section>
+    </section>
 </main>
 
   <footer class="site-footer">
@@ -468,5 +649,104 @@ a{color:inherit}
     });});
   })();
   </script>
+
+<script id="procurement-runtime">
+(() => {
+  const storageKey = 'august-menu-procurement-v1';
+  const panels = { menu: document.getElementById('menu-panel'), procurement: document.getElementById('procurement-panel') };
+  const tabs = [...document.querySelectorAll('[data-dashboard-tab]')];
+  const form = document.getElementById('purchase-form');
+  const dateInput = document.getElementById('purchase-date');
+  const productInput = document.getElementById('purchase-product');
+  const supplierInput = document.getElementById('purchase-supplier');
+  const priceInput = document.getElementById('purchase-price');
+  const dateFilter = document.getElementById('purchase-date-filter');
+  const tableBody = document.getElementById('purchase-table-body');
+  const receiptInput = document.getElementById('receipt-input');
+  const receiptStatus = document.getElementById('receipt-status');
+  const receiptFiles = document.getElementById('receipt-files');
+  const formStatus = document.getElementById('form-status');
+  const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 2 });
+  const dateFormat = new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+  let purchases = [];
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    purchases = Array.isArray(saved) ? saved.filter(item => item && item.date && item.product && item.supplier && Number(item.price) > 0) : [];
+  } catch (_) { purchases = []; }
+
+  const formatDate = value => {
+    const [year, month, day] = value.split('-').map(Number);
+    return dateFormat.format(new Date(year, month - 1, day));
+  };
+  const save = () => localStorage.setItem(storageKey, JSON.stringify(purchases));
+  const total = rows => rows.reduce((sum, item) => sum + Number(item.price), 0);
+
+  function setPanel(name, updateHash = true) {
+    const target = name === 'procurement' ? 'procurement' : 'menu';
+    Object.entries(panels).forEach(([key, panel]) => { panel.hidden = key !== target; });
+    tabs.forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.dashboardTab === target)));
+    if (updateHash) history.replaceState(null, '', target === 'procurement' ? '#procurement' : '#report-main');
+  }
+
+  function updateDateOptions() {
+    const current = dateFilter.value || 'all';
+    const dates = [...new Set(purchases.map(item => item.date))].sort().reverse();
+    dateFilter.replaceChildren();
+    const allOption = new Option('Все даты', 'all');
+    dateFilter.add(allOption);
+    dates.forEach(date => dateFilter.add(new Option(formatDate(date), date)));
+    dateFilter.value = dates.includes(current) || current === 'all' ? current : 'all';
+  }
+
+  function render() {
+    updateDateOptions();
+    const allTotal = total(purchases);
+    const dates = purchases.map(item => item.date).sort();
+    const filtered = dateFilter.value === 'all' ? purchases : purchases.filter(item => item.date === dateFilter.value);
+    document.getElementById('period-total').textContent = currency.format(allTotal);
+    document.getElementById('purchase-count').textContent = String(purchases.length);
+    document.getElementById('supplier-count').textContent = String(new Set(purchases.map(item => item.supplier.trim().toLocaleLowerCase('ru-RU'))).size);
+    document.getElementById('average-price').textContent = purchases.length ? currency.format(allTotal / purchases.length) : '—';
+    document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
+    document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
+    tableBody.replaceChildren();
+    if (!filtered.length) {
+      const row = document.createElement('tr');
+      const cell = document.createElement('td');
+      cell.colSpan = 4;
+      cell.className = 'empty-row';
+      cell.textContent = purchases.length ? 'На выбранную дату позиций нет.' : 'Пока нет данных. Добавьте позицию вручную или приложите чек для последующей сверки.';
+      row.append(cell); tableBody.append(row); return;
+    }
+    filtered.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(item => {
+      const row = document.createElement('tr');
+      [formatDate(item.date), item.product, item.supplier, currency.format(Number(item.price))].forEach(value => {
+        const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
+      });
+      tableBody.append(row);
+    });
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => setPanel(tab.dataset.dashboardTab)));
+  window.addEventListener('hashchange', () => setPanel(location.hash === '#procurement' ? 'procurement' : 'menu', false));
+  dateFilter.addEventListener('change', render);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const price = Number(priceInput.value);
+    if (!dateInput.value || !productInput.value.trim() || !supplierInput.value.trim() || !(price > 0)) return;
+    purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), price });
+    save(); form.reset(); formStatus.textContent = 'Позиция добавлена в реестр и учтена в итогах за период.'; render();
+  });
+  receiptInput.addEventListener('change', () => {
+    const files = [...receiptInput.files];
+    receiptFiles.replaceChildren();
+    receiptStatus.textContent = files.length ? `Выбрано чеков: ${files.length}. Для учёта внесите подтверждённые позиции в форму.` : 'Чеки пока не выбраны.';
+    files.forEach(file => { const item = document.createElement('li'); item.textContent = file.name; receiptFiles.append(item); });
+  });
+  render();
+  setPanel(location.hash === '#procurement' ? 'procurement' : 'menu', false);
+})();
+</script>
 </body>
 </html>
