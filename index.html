@@ -286,6 +286,27 @@ a{color:inherit}
     max-width: 100%;
     min-width: 0;
   }
+  .supplier-intro { margin-bottom: 20px; }
+  .supplier-layout { display: grid; grid-template-columns: minmax(270px, .82fr) minmax(0, 1.48fr); gap: 20px; align-items: start; }
+  .supplier-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; margin: 0 0 20px; }
+  .supplier-kpi { padding: 17px 19px; min-height: 96px; border: 1px solid rgba(111,75,47,.13); border-radius: 15px; background: #fffdf9; box-shadow: 0 7px 18px rgba(94,61,39,.06); }
+  .supplier-kpi span { display: block; margin-bottom: 8px; color: #8c6a55; font: 800 .67rem/1.15 Inter,Arial,sans-serif; letter-spacing: .085em; text-transform: uppercase; }
+  .supplier-kpi strong { color: #4d3020; font: 700 1.4rem/1.15 Georgia,'Times New Roman',serif; }
+  .supplier-form { display: grid; gap: 13px; }
+  .supplier-form label { display: grid; gap: 6px; color: #6d4c38; font: 700 .78rem/1.2 Inter,Arial,sans-serif; }
+  .supplier-form input,.supplier-form select,.supplier-filter select { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid #dbc7ae; border-radius: 9px; outline: none; background: #fffcf7; color: #4d3020; font: 500 .9rem/1.2 Inter,Arial,sans-serif; }
+  .supplier-form input:focus,.supplier-form select:focus,.supplier-filter select:focus { border-color: #9a6544; box-shadow: 0 0 0 3px rgba(154,101,68,.13); }
+  .supplier-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .supplier-form button { min-height: 43px; border: 0; border-radius: 9px; background: #6c422d; color: #fffaf2; cursor: pointer; font: 800 .8rem/1 Inter,Arial,sans-serif; letter-spacing: .02em; transition: transform .18s ease,background .18s ease; }
+  .supplier-form button:hover { background: #55301e; transform: translateY(-1px); }
+  .supplier-filter { display: grid; grid-template-columns: minmax(180px,.7fr) minmax(180px,.7fr) minmax(0,1.3fr); gap: 12px; align-items: end; margin: 0 0 17px; padding: 13px; border-radius: 11px; background: #f8efdf; }
+  .supplier-filter label { display: grid; gap: 6px; color: #6d4c38; font: 700 .76rem/1.2 Inter,Arial,sans-serif; }
+  .supplier-filter__note { color: #785944; font-size: .78rem; line-height: 1.4; }
+  .source-chip { display: inline-flex; width: max-content; margin-top: 4px; padding: 4px 7px; border-radius: 999px; background: #f2e4d0; color: #6b4833; font: 800 .65rem/1 Inter,Arial,sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+  .supplier-price { color: #4d3020; font-weight: 800; white-space: nowrap; }
+  .supplier-empty { padding: 28px 16px; color: #8a6d59; font-size: .88rem; font-style: italic; text-align: center; }
+  @media(max-width:840px){.supplier-layout{grid-template-columns:1fr}.supplier-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.supplier-filter{grid-template-columns:1fr 1fr}}
+  @media(max-width:580px){.dashboard-tabs{flex-wrap:wrap}.dashboard-tab{flex:1 1 100%}.supplier-kpis{grid-template-columns:1fr}.supplier-form .form-row,.supplier-filter{grid-template-columns:1fr}.supplier-card{padding:18px 15px}}
 </style>
 </head>
 <body data-theme="light" id="top">
@@ -318,6 +339,7 @@ a{color:inherit}
     <nav class="dashboard-tabs" aria-label="Разделы дашборда">
       <button class="dashboard-tab" type="button" data-dashboard-tab="menu" aria-selected="true" aria-controls="menu-panel">Меню</button>
       <button class="dashboard-tab" type="button" data-dashboard-tab="procurement" aria-selected="false" aria-controls="procurement-panel">Закупки и расходы</button>
+      <button class="dashboard-tab" type="button" data-dashboard-tab="suppliers" aria-selected="false" aria-controls="suppliers-panel">Поставщики</button>
     </nav>
     <section class="app-panel" id="menu-panel" role="tabpanel">
   <section class="menu-hero" aria-labelledby="menu-title">
@@ -521,9 +543,11 @@ a{color:inherit}
           <form class="purchase-form" id="purchase-form">
             <label>Дата покупки<input id="purchase-date" type="date" required></label>
             <label>Продукт<input id="purchase-product" type="text" maxlength="120" placeholder="Например, молоко" required></label>
-            <div class="form-row">
-              <label>Поставщик<input id="purchase-supplier" type="text" maxlength="120" placeholder="Название магазина или поставщика" required></label>
-              <label>Цена, ₽<input id="purchase-price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required></label>
+              <div class="form-row">
+               <label>Поставщик<input id="purchase-supplier" type="text" maxlength="120" placeholder="Название магазина или поставщика" required></label>
+               <label>Категория<select id="purchase-category" required><option value="Овощи и фрукты">Овощи и фрукты</option><option value="Мясо и птица">Мясо и птица</option><option value="Рыба и морепродукты">Рыба и морепродукты</option><option value="Молочные продукты">Молочные продукты</option><option value="Крупы и бакалея">Крупы и бакалея</option><option value="Хлеб и выпечка">Хлеб и выпечка</option><option value="Напитки">Напитки</option><option value="Прочее">Прочее</option></select></label>
+             </div>
+             <label>Цена, ₽<input id="purchase-price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required></label>
             </div>
             <button type="submit">Добавить в отчёт</button>
             <p class="form-status" id="form-status" role="status"></p>
@@ -552,6 +576,54 @@ a{color:inherit}
             </table>
           </div>
           <p class="procurement-note"><strong>Важно:</strong> внесённые позиции сохраняются в текущем браузере; выбранные файлы чеков доступны только до закрытия страницы. Для общего постоянного хранения и автоматического разбора чеков потребуется подключить защищённое хранилище.</p>
+        </article>
+      </section>
+    </section>
+    <section class="app-panel" id="suppliers-panel" role="tabpanel" hidden>
+      <section class="procurement-intro supplier-intro" aria-labelledby="suppliers-title">
+        <div>
+          <p class="procurement-eyebrow">Справочник цен поставщиков</p>
+          <h2 id="suppliers-title">Поставщики и позиции</h2>
+          <p>Здесь собраны цены поставщиков из внесённых закупок и вручную добавленных позиций. Фильтруйте по категории и поставщику, чтобы быстро сравнить доступные товары.</p>
+        </div>
+        <div class="procurement-period-badge"><span>Источник данных</span><strong>Чеки + вручную</strong></div>
+      </section>
+      <section class="supplier-kpis" aria-label="Итоги по поставщикам">
+        <article class="supplier-kpi"><span>Поставщиков</span><strong id="supplier-directory-count">0</strong></article>
+        <article class="supplier-kpi"><span>Позиций в справочнике</span><strong id="supplier-item-count">0</strong></article>
+        <article class="supplier-kpi"><span>Категорий</span><strong id="supplier-category-count">0</strong></article>
+      </section>
+      <section class="supplier-layout">
+        <article class="procurement-card supplier-card">
+          <h3>Добавить цену поставщика</h3>
+          <p>Внесите позицию вручную либо перенесите её из прикреплённого чека после проверки. Цена отражает стоимость одной позиции в чеке или прайс-листе.</p>
+          <form class="supplier-form" id="supplier-form">
+            <label>Поставщик<input id="supplier-name" type="text" maxlength="120" placeholder="Например, Фермерский рынок" required></label>
+            <label>Товар или позиция<input id="supplier-product" type="text" maxlength="120" placeholder="Например, томаты" required></label>
+            <div class="form-row">
+              <label>Категория<select id="supplier-category" required><option value="Овощи и фрукты">Овощи и фрукты</option><option value="Мясо и птица">Мясо и птица</option><option value="Рыба и морепродукты">Рыба и морепродукты</option><option value="Молочные продукты">Молочные продукты</option><option value="Крупы и бакалея">Крупы и бакалея</option><option value="Хлеб и выпечка">Хлеб и выпечка</option><option value="Напитки">Напитки</option><option value="Прочее">Прочее</option></select></label>
+              <label>Стоимость, ₽<input id="supplier-price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" required></label>
+            </div>
+            <label>Источник<select id="supplier-source"><option value="Вручную">Вручную</option><option value="Из чека">Из чека</option></select></label>
+            <button type="submit">Добавить в справочник</button>
+            <p class="form-status" id="supplier-form-status" role="status"></p>
+          </form>
+        </article>
+        <article class="procurement-card supplier-card">
+          <h3>Цены поставщиков</h3>
+          <p>Фильтры не изменяют закупки и расходы: они только помогают просматривать справочник.</p>
+          <div class="supplier-filter">
+            <label for="supplier-category-filter">Категория<select id="supplier-category-filter"><option value="all">Все категории</option></select></label>
+            <label for="supplier-name-filter">Поставщик<select id="supplier-name-filter"><option value="all">Все поставщики</option></select></label>
+            <div class="supplier-filter__note" id="supplier-filter-note">Пока нет позиций в справочнике.</div>
+          </div>
+          <div class="purchase-table-wrap">
+            <table class="purchase-table supplier-table">
+              <thead><tr><th scope="col">Поставщик</th><th scope="col">Позиция</th><th scope="col">Категория</th><th scope="col">Источник</th><th scope="col">Стоимость</th></tr></thead>
+              <tbody id="supplier-table-body"><tr><td class="supplier-empty" colspan="5">Добавьте позицию вручную или внесите подтверждённую строку из чека.</td></tr></tbody>
+            </table>
+          </div>
+          <p class="procurement-note"><strong>Как работать с чеками:</strong> прикрепите файл на вкладке «Закупки и расходы», сверяйте его в текущей сессии браузера и переносите подтверждённые позиции сюда с источником «Из чека». Автоматическое распознавание чеков требует отдельного защищённого сервиса.</p>
         </article>
       </section>
     </section>
@@ -653,12 +725,14 @@ a{color:inherit}
 <script id="procurement-runtime">
 (() => {
   const storageKey = 'august-menu-procurement-v1';
-  const panels = { menu: document.getElementById('menu-panel'), procurement: document.getElementById('procurement-panel') };
+  const supplierStorageKey = 'august-menu-suppliers-v1';
+  const panels = { menu: document.getElementById('menu-panel'), procurement: document.getElementById('procurement-panel'), suppliers: document.getElementById('suppliers-panel') };
   const tabs = [...document.querySelectorAll('[data-dashboard-tab]')];
   const form = document.getElementById('purchase-form');
   const dateInput = document.getElementById('purchase-date');
   const productInput = document.getElementById('purchase-product');
   const supplierInput = document.getElementById('purchase-supplier');
+  const categoryInput = document.getElementById('purchase-category');
   const priceInput = document.getElementById('purchase-price');
   const dateFilter = document.getElementById('purchase-date-filter');
   const tableBody = document.getElementById('purchase-table-body');
@@ -666,27 +740,43 @@ a{color:inherit}
   const receiptStatus = document.getElementById('receipt-status');
   const receiptFiles = document.getElementById('receipt-files');
   const formStatus = document.getElementById('form-status');
+  const supplierForm = document.getElementById('supplier-form');
+  const supplierNameInput = document.getElementById('supplier-name');
+  const supplierProductInput = document.getElementById('supplier-product');
+  const supplierCategoryInput = document.getElementById('supplier-category');
+  const supplierPriceInput = document.getElementById('supplier-price');
+  const supplierSourceInput = document.getElementById('supplier-source');
+  const supplierFormStatus = document.getElementById('supplier-form-status');
+  const supplierCategoryFilter = document.getElementById('supplier-category-filter');
+  const supplierNameFilter = document.getElementById('supplier-name-filter');
+  const supplierTableBody = document.getElementById('supplier-table-body');
   const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 2 });
   const dateFormat = new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
   let purchases = [];
+  let supplierItems = [];
 
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
-    purchases = Array.isArray(saved) ? saved.filter(item => item && item.date && item.product && item.supplier && Number(item.price) > 0) : [];
+    purchases = Array.isArray(saved) ? saved.filter(item => item && item.date && item.product && item.supplier && Number(item.price) > 0).map(item => ({ ...item, category: item.category || 'Прочее' })) : [];
   } catch (_) { purchases = []; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(supplierStorageKey) || '[]');
+    supplierItems = Array.isArray(saved) ? saved.filter(item => item && item.product && item.supplier && item.category && Number(item.price) > 0) : [];
+  } catch (_) { supplierItems = []; }
 
   const formatDate = value => {
     const [year, month, day] = value.split('-').map(Number);
     return dateFormat.format(new Date(year, month - 1, day));
   };
   const save = () => localStorage.setItem(storageKey, JSON.stringify(purchases));
+  const saveSupplierItems = () => localStorage.setItem(supplierStorageKey, JSON.stringify(supplierItems));
   const total = rows => rows.reduce((sum, item) => sum + Number(item.price), 0);
 
   function setPanel(name, updateHash = true) {
-    const target = name === 'procurement' ? 'procurement' : 'menu';
+    const target = ['procurement', 'suppliers'].includes(name) ? name : 'menu';
     Object.entries(panels).forEach(([key, panel]) => { panel.hidden = key !== target; });
     tabs.forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.dashboardTab === target)));
-    if (updateHash) history.replaceState(null, '', target === 'procurement' ? '#procurement' : '#report-main');
+    if (updateHash) history.replaceState(null, '', target === 'menu' ? '#report-main' : `#${target}`);
   }
 
   function updateDateOptions() {
@@ -710,6 +800,7 @@ a{color:inherit}
     document.getElementById('average-price').textContent = purchases.length ? currency.format(allTotal / purchases.length) : '—';
     document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
     document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
+    renderSuppliers();
     tableBody.replaceChildren();
     if (!filtered.length) {
       const row = document.createElement('tr');
@@ -728,14 +819,60 @@ a{color:inherit}
     });
   }
 
+  function directoryRows() {
+    const fromPurchases = purchases.map(item => ({ supplier: item.supplier, product: item.product, category: item.category || 'Прочее', price: item.price, source: 'Из закупки' }));
+    return [...fromPurchases, ...supplierItems];
+  }
+
+  function updateSupplierFilters(rows) {
+    const currentCategory = supplierCategoryFilter.value || 'all';
+    const currentSupplier = supplierNameFilter.value || 'all';
+    const categories = [...new Set(rows.map(item => item.category))].sort((a,b) => a.localeCompare(b, 'ru'));
+    const suppliers = [...new Set(rows.map(item => item.supplier))].sort((a,b) => a.localeCompare(b, 'ru'));
+    supplierCategoryFilter.replaceChildren(new Option('Все категории', 'all'));
+    categories.forEach(category => supplierCategoryFilter.add(new Option(category, category)));
+    supplierNameFilter.replaceChildren(new Option('Все поставщики', 'all'));
+    suppliers.forEach(supplier => supplierNameFilter.add(new Option(supplier, supplier)));
+    supplierCategoryFilter.value = categories.includes(currentCategory) ? currentCategory : 'all';
+    supplierNameFilter.value = suppliers.includes(currentSupplier) ? currentSupplier : 'all';
+  }
+
+  function renderSuppliers() {
+    const rows = directoryRows();
+    updateSupplierFilters(rows);
+    const category = supplierCategoryFilter.value;
+    const supplier = supplierNameFilter.value;
+    const filtered = rows.filter(item => (category === 'all' || item.category === category) && (supplier === 'all' || item.supplier === supplier));
+    document.getElementById('supplier-directory-count').textContent = String(new Set(rows.map(item => item.supplier.trim().toLocaleLowerCase('ru-RU'))).size);
+    document.getElementById('supplier-item-count').textContent = String(rows.length);
+    document.getElementById('supplier-category-count').textContent = String(new Set(rows.map(item => item.category)).size);
+    document.getElementById('supplier-filter-note').textContent = rows.length ? `Показано позиций: ${filtered.length} из ${rows.length}.` : 'Пока нет позиций в справочнике.';
+    supplierTableBody.replaceChildren();
+    if (!filtered.length) {
+      const row = document.createElement('tr'); const cell = document.createElement('td');
+      cell.colSpan = 5; cell.className = 'supplier-empty';
+      cell.textContent = rows.length ? 'По выбранным фильтрам позиций нет.' : 'Добавьте позицию вручную или внесите подтверждённую строку из чека.';
+      row.append(cell); supplierTableBody.append(row); return;
+    }
+    filtered.slice().sort((a,b) => a.supplier.localeCompare(b.supplier, 'ru') || a.product.localeCompare(b.product, 'ru')).forEach(item => {
+      const row = document.createElement('tr');
+      [item.supplier, item.product, item.category, item.source || 'Вручную', currency.format(Number(item.price))].forEach((value,index) => {
+        const cell = document.createElement('td');
+        if (index === 3) { const chip = document.createElement('span'); chip.className = 'source-chip'; chip.textContent = value; cell.append(chip); }
+        else { cell.textContent = value; if (index === 4) cell.className = 'supplier-price'; }
+        row.append(cell);
+      }); supplierTableBody.append(row);
+    });
+  }
+
   tabs.forEach(tab => tab.addEventListener('click', () => setPanel(tab.dataset.dashboardTab)));
-  window.addEventListener('hashchange', () => setPanel(location.hash === '#procurement' ? 'procurement' : 'menu', false));
+  window.addEventListener('hashchange', () => setPanel(['#procurement', '#suppliers'].includes(location.hash) ? location.hash.slice(1) : 'menu', false));
   dateFilter.addEventListener('change', render);
   form.addEventListener('submit', event => {
     event.preventDefault();
     const price = Number(priceInput.value);
     if (!dateInput.value || !productInput.value.trim() || !supplierInput.value.trim() || !(price > 0)) return;
-    purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), price });
+    purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), category: categoryInput.value, price });
     save(); form.reset(); formStatus.textContent = 'Позиция добавлена в реестр и учтена в итогах за период.'; render();
   });
   receiptInput.addEventListener('change', () => {
@@ -744,8 +881,17 @@ a{color:inherit}
     receiptStatus.textContent = files.length ? `Выбрано чеков: ${files.length}. Для учёта внесите подтверждённые позиции в форму.` : 'Чеки пока не выбраны.';
     files.forEach(file => { const item = document.createElement('li'); item.textContent = file.name; receiptFiles.append(item); });
   });
+  supplierForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const price = Number(supplierPriceInput.value);
+    if (!supplierNameInput.value.trim() || !supplierProductInput.value.trim() || !(price > 0)) return;
+    supplierItems.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, supplier: supplierNameInput.value.trim(), product: supplierProductInput.value.trim(), category: supplierCategoryInput.value, price, source: supplierSourceInput.value });
+    saveSupplierItems(); supplierForm.reset(); supplierFormStatus.textContent = 'Позиция добавлена в справочник поставщиков.'; renderSuppliers();
+  });
+  supplierCategoryFilter.addEventListener('change', renderSuppliers);
+  supplierNameFilter.addEventListener('change', renderSuppliers);
   render();
-  setPanel(location.hash === '#procurement' ? 'procurement' : 'menu', false);
+  setPanel(['#procurement', '#suppliers'].includes(location.hash) ? location.hash.slice(1) : 'menu', false);
 })();
 </script>
 </body>
