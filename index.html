@@ -221,7 +221,7 @@ a{color:inherit}
   .procurement-period-badge { min-width: 160px; padding: 12px 15px; border-radius: 12px; background: #6c422d; color: #fffaf2; text-align: center; }
   .procurement-period-badge span { display: block; margin-bottom: 3px; color: #e8cda9; font: 800 .67rem/1 Inter, Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
   .procurement-period-badge strong { font: 700 .96rem/1.25 Georgia, 'Times New Roman', serif; }
-  .procurement-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; margin: 0 0 20px; }
+   .procurement-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; margin: 0 0 20px; }
   .procurement-kpi { min-height: 106px; padding: 18px 19px; border: 1px solid rgba(111, 75, 47, .13); border-radius: 15px; background: #fffdf9; box-shadow: 0 7px 18px rgba(94, 61, 39, .06); }
   .procurement-kpi span { display: block; margin-bottom: 9px; color: #8c6a55; font: 800 .67rem/1.15 Inter, Arial, sans-serif; letter-spacing: .085em; text-transform: uppercase; }
   .procurement-kpi strong { display: block; color: #4d3020; font: 700 clamp(1.18rem, 2.1vw, 1.65rem)/1.12 Georgia, 'Times New Roman', serif; }
@@ -257,14 +257,14 @@ a{color:inherit}
   .procurement-note strong { color: #684632; }
   .form-status { min-height: 18px; margin: 0; color: #547040; font-size: .78rem; line-height: 1.35; }
   @media (max-width: 840px) {
-    .procurement-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+     .procurement-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .procurement-layout { grid-template-columns: 1fr; }
   }
   @media (max-width: 580px) {
     .dashboard-tabs { margin-bottom: 16px; }
     .procurement-intro { grid-template-columns: 1fr; padding: 22px 19px; }
     .procurement-period-badge { width: auto; min-width: 0; }
-    .procurement-kpis { gap: 9px; }
+     .procurement-kpis { grid-template-columns: 1fr; gap: 9px; }
     .procurement-kpi { min-height: 93px; padding: 14px; }
     .procurement-card { padding: 18px 15px; }
     .purchase-form .form-row { grid-template-columns: 1fr; gap: 13px; }
@@ -530,10 +530,9 @@ a{color:inherit}
       </section>
 
       <section class="procurement-kpis" aria-label="Итоги расходов за период">
-        <article class="procurement-kpi"><span>Расходы за период</span><strong id="period-total">0 ₽</strong></article>
-        <article class="procurement-kpi"><span>Позиций учтено</span><strong id="purchase-count">0</strong></article>
-        <article class="procurement-kpi"><span>Поставщиков</span><strong id="supplier-count">0</strong></article>
-        <article class="procurement-kpi"><span>Средняя цена позиции</span><strong id="average-price">—</strong></article>
+         <article class="procurement-kpi"><span>Расходы за период</span><strong id="period-total">0 ₽</strong></article>
+         <article class="procurement-kpi"><span>Расходы за текущий месяц</span><strong id="current-month-total">0 ₽</strong></article>
+         <article class="procurement-kpi"><span>Расходы за текущую неделю</span><strong id="current-week-total">0 ₽</strong></article>
       </section>
 
       <section class="procurement-layout">
@@ -795,9 +794,24 @@ a{color:inherit}
     const dates = purchases.map(item => item.date).sort();
     const filtered = dateFilter.value === 'all' ? purchases : purchases.filter(item => item.date === dateFilter.value);
     document.getElementById('period-total').textContent = currency.format(allTotal);
-    document.getElementById('purchase-count').textContent = String(purchases.length);
-    document.getElementById('supplier-count').textContent = String(new Set(purchases.map(item => item.supplier.trim().toLocaleLowerCase('ru-RU'))).size);
-    document.getElementById('average-price').textContent = purchases.length ? currency.format(allTotal / purchases.length) : '—';
+    const today = new Date();
+    const localToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const currentMonthRows = purchases.filter(item => {
+      const [year, month] = item.date.split('-').map(Number);
+      return year === localToday.getFullYear() && month === localToday.getMonth() + 1;
+    });
+    const weekStart = new Date(localToday);
+    const weekday = weekStart.getDay() || 7;
+    weekStart.setDate(weekStart.getDate() - weekday + 1);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekEnd.getDate() + 7);
+    const currentWeekRows = purchases.filter(item => {
+      const [year, month, day] = item.date.split('-').map(Number);
+      const purchaseDate = new Date(year, month - 1, day);
+      return purchaseDate >= weekStart && purchaseDate < weekEnd;
+    });
+    document.getElementById('current-month-total').textContent = currency.format(total(currentMonthRows));
+    document.getElementById('current-week-total').textContent = currency.format(total(currentWeekRows));
     document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
     document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
