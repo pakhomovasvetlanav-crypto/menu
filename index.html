@@ -236,13 +236,6 @@ a{color:inherit}
   .purchase-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .purchase-form button, .receipt-label { min-height: 43px; border: 0; border-radius: 9px; background: #6c422d; color: #fffaf2; cursor: pointer; font: 800 .8rem/1 Inter, Arial, sans-serif; letter-spacing: .02em; text-align: center; transition: transform .18s ease, background .18s ease; }
   .purchase-form button:hover, .receipt-label:hover { background: #55301e; transform: translateY(-1px); }
-  .receipt-box { margin-top: 21px; padding-top: 19px; border-top: 1px solid #eadbc9; }
-  .receipt-box h4 { margin: 0; color: #61402c; font: 800 .82rem/1.2 Inter, Arial, sans-serif; letter-spacing: .035em; }
-  .receipt-box p { margin: 7px 0 12px; color: #7e6554; font-size: .8rem; line-height: 1.45; }
-  .receipt-control input { display: none; }
-  .receipt-label { display: flex; align-items: center; justify-content: center; padding: 0 12px; }
-  .receipt-status { min-height: 18px; margin: 10px 0 0; color: #8a684f; font-size: .78rem; line-height: 1.4; }
-  .receipt-files { display: grid; gap: 5px; margin: 8px 0 0; padding: 0; list-style: none; color: #76533e; font-size: .78rem; }
   .filter-row { display: flex; align-items: end; gap: 12px; margin: 0 0 17px; padding: 13px; border-radius: 11px; background: #f8efdf; }
   .filter-row label { flex: 1; }
   .date-expense { min-width: 153px; padding: 10px 12px; border-left: 3px solid #9a6544; color: #72503b; font: 700 .8rem/1.35 Inter, Arial, sans-serif; }
@@ -524,7 +517,7 @@ a{color:inherit}
         <div>
           <p class="procurement-eyebrow">Форма учёта закупок</p>
           <h2 id="procurement-title">Расходы на продукты</h2>
-          <p>Добавляйте подтверждённые позиции из чеков: дата, продукт, поставщик и цена. Верхние показатели всегда считают весь внесённый период, а фильтр ниже помогает просмотреть конкретную дату.</p>
+           <p>После обработки чеков в этом чате подтверждённые позиции появляются в учёте: дата, продукт, поставщик и цена. Верхние показатели всегда считают весь внесённый период, а фильтр ниже помогает просмотреть конкретную дату.</p>
         </div>
         <div class="procurement-period-badge"><span>Период учёта</span><strong id="procurement-period-label">Нет данных</strong></div>
       </section>
@@ -538,7 +531,7 @@ a{color:inherit}
       <section class="procurement-layout">
         <article class="procurement-card">
           <h3>Добавить позицию</h3>
-          <p>Вносите данные после проверки чека. Одна строка — один продукт или товарная позиция.</p>
+           <p>Вносите корректировки вручную после обработки чека в этом чате. Одна строка — один продукт или товарная позиция.</p>
           <form class="purchase-form" id="purchase-form">
             <label>Дата покупки<input id="purchase-date" type="date" required></label>
             <label>Продукт<input id="purchase-product" type="text" maxlength="120" placeholder="Например, молоко" required></label>
@@ -552,13 +545,6 @@ a{color:inherit}
             <p class="form-status" id="form-status" role="status"></p>
           </form>
 
-          <div class="receipt-box">
-            <h4>Прикрепить чеки</h4>
-            <p>Изображения и PDF можно добавить как ориентир для ручной сверки. Перед включением в расходы проверьте названия, поставщика и суммы.</p>
-            <div class="receipt-control"><input id="receipt-input" type="file" accept="image/*,.pdf" multiple><label class="receipt-label" for="receipt-input">Выбрать файлы чеков</label></div>
-            <p class="receipt-status" id="receipt-status">Чеки пока не выбраны.</p>
-            <ul class="receipt-files" id="receipt-files" aria-live="polite"></ul>
-          </div>
         </article>
 
         <article class="procurement-card">
@@ -571,10 +557,10 @@ a{color:inherit}
           <div class="purchase-table-wrap">
             <table class="purchase-table">
               <thead><tr><th scope="col">Дата</th><th scope="col">Продукт</th><th scope="col">Поставщик</th><th scope="col">Цена</th></tr></thead>
-              <tbody id="purchase-table-body"><tr><td class="empty-row" colspan="4">Пока нет данных. Добавьте позицию вручную или приложите чек для последующей сверки.</td></tr></tbody>
+               <tbody id="purchase-table-body"><tr><td class="empty-row" colspan="4">Пока нет данных. Прикрепите чек в этом чате — после обработки позиции появятся здесь.</td></tr></tbody>
             </table>
           </div>
-          <p class="procurement-note"><strong>Важно:</strong> внесённые позиции сохраняются в текущем браузере; выбранные файлы чеков доступны только до закрытия страницы. Для общего постоянного хранения и автоматического разбора чеков потребуется подключить защищённое хранилище.</p>
+           <p class="procurement-note"><strong>Чеки:</strong> прикрепляйте изображения и PDF в это окно чата. После обработки оригиналы сохраняются в рабочей папке, синхронизируемой с Яндекс.Диском, а подтверждённые позиции добавляются в учёт.</p>
         </article>
       </section>
     </section>
@@ -595,7 +581,7 @@ a{color:inherit}
       <section class="supplier-layout">
         <article class="procurement-card supplier-card">
           <h3>Добавить цену поставщика</h3>
-          <p>Внесите позицию вручную либо перенесите её из прикреплённого чека после проверки. Цена отражает стоимость одной позиции в чеке или прайс-листе.</p>
+          <p>Внесите позицию вручную либо скорректируйте строку, добавленную после обработки чека в этом чате. Цена отражает стоимость одной позиции в чеке или прайс-листе.</p>
           <form class="supplier-form" id="supplier-form">
             <label>Поставщик<input id="supplier-name" type="text" maxlength="120" placeholder="Например, Фермерский рынок" required></label>
             <label>Товар или позиция<input id="supplier-product" type="text" maxlength="120" placeholder="Например, томаты" required></label>
@@ -622,7 +608,7 @@ a{color:inherit}
               <tbody id="supplier-table-body"><tr><td class="supplier-empty" colspan="5">Добавьте позицию вручную или внесите подтверждённую строку из чека.</td></tr></tbody>
             </table>
           </div>
-          <p class="procurement-note"><strong>Как работать с чеками:</strong> прикрепите файл на вкладке «Закупки и расходы», сверяйте его в текущей сессии браузера и переносите подтверждённые позиции сюда с источником «Из чека». Автоматическое распознавание чеков требует отдельного защищённого сервиса.</p>
+          <p class="procurement-note"><strong>Как работать с чеками:</strong> прикрепите изображение или PDF в это окно чата. После обработки подтвердите или скорректируйте позиции — они попадут в расходы и в справочник с источником «Из чека».</p>
         </article>
       </section>
     </section>
@@ -735,9 +721,6 @@ a{color:inherit}
   const priceInput = document.getElementById('purchase-price');
   const dateFilter = document.getElementById('purchase-date-filter');
   const tableBody = document.getElementById('purchase-table-body');
-  const receiptInput = document.getElementById('receipt-input');
-  const receiptStatus = document.getElementById('receipt-status');
-  const receiptFiles = document.getElementById('receipt-files');
   const formStatus = document.getElementById('form-status');
   const supplierForm = document.getElementById('supplier-form');
   const supplierNameInput = document.getElementById('supplier-name');
@@ -821,7 +804,7 @@ a{color:inherit}
       const cell = document.createElement('td');
       cell.colSpan = 4;
       cell.className = 'empty-row';
-      cell.textContent = purchases.length ? 'На выбранную дату позиций нет.' : 'Пока нет данных. Добавьте позицию вручную или приложите чек для последующей сверки.';
+      cell.textContent = purchases.length ? 'На выбранную дату позиций нет.' : 'Пока нет данных. Прикрепите чек в этом чате — после обработки позиции появятся здесь.';
       row.append(cell); tableBody.append(row); return;
     }
     filtered.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(item => {
@@ -888,12 +871,6 @@ a{color:inherit}
     if (!dateInput.value || !productInput.value.trim() || !supplierInput.value.trim() || !(price > 0)) return;
     purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), category: categoryInput.value, price });
     save(); form.reset(); formStatus.textContent = 'Позиция добавлена в реестр и учтена в итогах за период.'; render();
-  });
-  receiptInput.addEventListener('change', () => {
-    const files = [...receiptInput.files];
-    receiptFiles.replaceChildren();
-    receiptStatus.textContent = files.length ? `Выбрано чеков: ${files.length}. Для учёта внесите подтверждённые позиции в форму.` : 'Чеки пока не выбраны.';
-    files.forEach(file => { const item = document.createElement('li'); item.textContent = file.name; receiptFiles.append(item); });
   });
   supplierForm.addEventListener('submit', event => {
     event.preventDefault();
