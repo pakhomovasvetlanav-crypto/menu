@@ -751,6 +751,7 @@ a{color:inherit}
     { id: 'c03', date: '2026-08-11', product: 'Сметана 20%, 380 г', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 160.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c04', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 750.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c05', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 800.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'm01', date: '2026-08-11', product: 'Черешня', supplier: 'Поставщик не указан', category: 'Овощи и фрукты', price: 750.00, source: 'Без чека', detailLevel: 'itemized', supplierKnown: false },
     { id: 'c06', date: '2026-08-13', product: 'Ветчина куриная «Аппетитная»', supplier: 'ВкусВилл', category: 'Мясо и птица', price: 376.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c07', date: '2026-08-13', product: 'Хлебцы рисовые с кунжутом', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 76.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c08', date: '2026-08-13', product: 'Хлебцы гречневые', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 72.00, source: 'Из чека', detailLevel: 'itemized' },
@@ -864,7 +865,7 @@ a{color:inherit}
   }
 
   function directoryRows() {
-    const fromPurchases = purchases.filter(item => item.detailLevel !== 'undetailed').map(item => ({ supplier: item.supplier, product: item.product, category: item.category || 'Прочее', price: item.price, source: item.source || 'Из закупки' }));
+    const fromPurchases = purchases.filter(item => item.detailLevel !== 'undetailed' && item.supplierKnown !== false).map(item => ({ supplier: item.supplier, product: item.product, category: item.category || 'Прочее', price: item.price, source: item.source || 'Из закупки' }));
     return [...fromPurchases, ...supplierItems];
   }
 
