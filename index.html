@@ -818,8 +818,16 @@ a{color:inherit}
   };
   const save = () => localStorage.setItem(storageKey, JSON.stringify(purchases));
   const saveSupplierItems = () => localStorage.setItem(supplierStorageKey, JSON.stringify(supplierItems));
-  const newImportedRows = importedPurchases.filter(item => !purchases.some(existing => existing.id === item.id));
-  if (newImportedRows.length) { purchases = [...newImportedRows, ...purchases]; save(); }
+    // Данные из чеков являются исходными: при обновлении страницы заменяем только
+    // ранее импортированные строки, а вручную добавленные пользователем сохраняем.
+    const importedIds = new Set(importedPurchases.map(item => item.id));
+    const existingImported = new Map(purchases.filter(item => importedIds.has(item.id)).map(item => [item.id, item]));
+    const importedChanged = importedPurchases.some(item => JSON.stringify(existingImported.get(item.id) || null) !== JSON.stringify(item));
+    const manualPurchases = purchases.filter(item => !importedIds.has(item.id));
+    if (importedChanged) {
+      purchases = [...importedPurchases, ...manualPurchases];
+      save();
+    }
   const total = rows => rows.reduce((sum, item) => sum + Number(item.price), 0);
 
     function setPanel(name, updateHash = true) {
