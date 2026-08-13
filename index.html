@@ -248,6 +248,12 @@ a{color:inherit}
   .purchase-table .empty-row { padding: 23px 12px; color: #8a6d59; font-style: italic; text-align: center; }
   .procurement-note { margin: 14px 0 0; color: #876a57; font-size: .77rem; line-height: 1.5; }
   .procurement-note strong { color: #684632; }
+  .expense-composition { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0 0 20px; }
+  .expense-composition__item { padding: 13px 15px; border: 1px solid #eadbc9; border-radius: 12px; background: #fffaf2; color: #72503b; font: 700 .78rem/1.4 Inter,Arial,sans-serif; }
+  .expense-composition__item strong { display: block; margin-top: 3px; color: #4d3020; font: 700 1.12rem/1.2 Georgia,'Times New Roman',serif; }
+  .expense-composition__item--limited { border-color: #e3c88e; background: #fff7e6; }
+  .expense-status { display: inline-flex; align-items: center; width: max-content; padding: 4px 7px; border-radius: 999px; background: #e8f0e4; color: #506843; font: 800 .65rem/1 Inter,Arial,sans-serif; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .expense-status--limited { background: #f8e4bd; color: #81581c; }
   .form-status { min-height: 18px; margin: 0; color: #547040; font-size: .78rem; line-height: 1.35; }
   @media (max-width: 840px) {
      .procurement-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -262,7 +268,8 @@ a{color:inherit}
     .procurement-card { padding: 18px 15px; }
     .purchase-form .form-row { grid-template-columns: 1fr; gap: 13px; }
     .filter-row { display: grid; grid-template-columns: 1fr; align-items: stretch; }
-    .date-expense { min-width: 0; }
+     .date-expense { min-width: 0; }
+     .expense-composition { grid-template-columns: 1fr; }
   }
   /* Не позволяем широкой таблице расширять страницу на мобильных устройствах. */
   #procurement-panel,
@@ -517,7 +524,7 @@ a{color:inherit}
         <div>
           <p class="procurement-eyebrow">Форма учёта закупок</p>
           <h2 id="procurement-title">Расходы на продукты</h2>
-           <p>После обработки чеков в этом чате подтверждённые позиции появляются в учёте: дата, продукт, поставщик и цена. Верхние показатели всегда считают весь внесённый период, а фильтр ниже помогает просмотреть конкретную дату.</p>
+          <p>Чеки с товарными позициями попадают в учёт и справочник цен. Переводы и чеки без расшифровки позиций учитываются отдельно как «Расход без детализации», чтобы не искажать цены поставщиков.</p>
         </div>
         <div class="procurement-period-badge"><span>Период учёта</span><strong id="procurement-period-label">Нет данных</strong></div>
       </section>
@@ -526,6 +533,10 @@ a{color:inherit}
          <article class="procurement-kpi"><span>Расходы за период</span><strong id="period-total">0 ₽</strong></article>
          <article class="procurement-kpi"><span>Расходы за текущий месяц</span><strong id="current-month-total">0 ₽</strong></article>
          <article class="procurement-kpi"><span>Расходы за текущую неделю</span><strong id="current-week-total">0 ₽</strong></article>
+      </section>
+      <section class="expense-composition" aria-label="Качество детализации расходов">
+        <article class="expense-composition__item"><span>С детализацией по товарам</span><strong id="itemized-total">0 ₽</strong><span id="itemized-note">0 товарных позиций</span></article>
+        <article class="expense-composition__item expense-composition__item--limited"><span>Расход без детализации</span><strong id="undetailed-total">0 ₽</strong><span id="undetailed-note">0 операций без товарных строк</span></article>
       </section>
 
       <section class="procurement-layout">
@@ -556,8 +567,8 @@ a{color:inherit}
           </div>
           <div class="purchase-table-wrap">
             <table class="purchase-table">
-              <thead><tr><th scope="col">Дата</th><th scope="col">Продукт</th><th scope="col">Поставщик</th><th scope="col">Цена</th></tr></thead>
-               <tbody id="purchase-table-body"><tr><td class="empty-row" colspan="4">Пока нет данных. Прикрепите чек в этом чате — после обработки позиции появятся здесь.</td></tr></tbody>
+              <thead><tr><th scope="col">Дата</th><th scope="col">Продукт / расход</th><th scope="col">Поставщик</th><th scope="col">Категория</th><th scope="col">Статус</th><th scope="col">Цена</th></tr></thead>
+              <tbody id="purchase-table-body"><tr><td class="empty-row" colspan="6">Пока нет данных. Прикрепите чек в этом чате — после обработки позиции появятся здесь.</td></tr></tbody>
             </table>
           </div>
            <p class="procurement-note"><strong>Чеки:</strong> прикрепляйте изображения и PDF в это окно чата. После обработки оригиналы сохраняются в рабочей папке, синхронизируемой с Яндекс.Диском, а подтверждённые позиции добавляются в учёт.</p>
@@ -569,7 +580,7 @@ a{color:inherit}
         <div>
           <p class="procurement-eyebrow">Справочник цен поставщиков</p>
           <h2 id="suppliers-title">Поставщики и позиции</h2>
-          <p>Здесь собраны цены поставщиков из внесённых закупок и вручную добавленных позиций. Фильтруйте по категории и поставщику, чтобы быстро сравнить доступные товары.</p>
+          <p>Здесь собраны только позиции, где в чеке читаются товар и стоимость. Расходы без товарных строк не включаются в сравнение цен поставщиков.</p>
         </div>
         <div class="procurement-period-badge"><span>Источник данных</span><strong>Чеки + вручную</strong></div>
       </section>
@@ -581,7 +592,7 @@ a{color:inherit}
       <section class="supplier-layout">
         <article class="procurement-card supplier-card">
           <h3>Добавить цену поставщика</h3>
-          <p>Внесите позицию вручную либо скорректируйте строку, добавленную после обработки чека в этом чате. Цена отражает стоимость одной позиции в чеке или прайс-листе.</p>
+          <p>Внесите позицию вручную либо скорректируйте строку из чека. Цена отражает стоимость одной позиции в чеке или прайс-листе.</p>
           <form class="supplier-form" id="supplier-form">
             <label>Поставщик<input id="supplier-name" type="text" maxlength="120" placeholder="Например, Фермерский рынок" required></label>
             <label>Товар или позиция<input id="supplier-product" type="text" maxlength="120" placeholder="Например, томаты" required></label>
@@ -734,13 +745,42 @@ a{color:inherit}
   const supplierTableBody = document.getElementById('supplier-table-body');
   const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 2 });
   const dateFormat = new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+  const importedPurchases = [
+    { id: 'c01', date: '2026-08-11', product: 'Сыр «Уайт Найт» 45%', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 300.80, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c02', date: '2026-08-11', product: 'Горчица столовая', supplier: 'ИП Тарасов Денис Иванович', category: 'Крупы и бакалея', price: 65.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c03', date: '2026-08-11', product: 'Сметана 20%, 380 г', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 160.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c04', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 750.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c05', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 800.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c06', date: '2026-08-13', product: 'Ветчина куриная «Аппетитная»', supplier: 'ВкусВилл', category: 'Мясо и птица', price: 376.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c07', date: '2026-08-13', product: 'Хлебцы рисовые с кунжутом', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 76.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c08', date: '2026-08-13', product: 'Хлебцы гречневые', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 72.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c09', date: '2026-08-13', product: 'Хлебцы кукурузные', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 97.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c10', date: '2026-08-13', product: 'Кускус', supplier: 'ВкусВилл', category: 'Крупы и бакалея', price: 122.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c11', date: '2026-08-13', product: 'Киноа', supplier: 'ВкусВилл', category: 'Крупы и бакалея', price: 197.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c12', date: '2026-08-13', product: 'Масса творожная безлактозная 15%', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 192.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c13', date: '2026-08-13', product: 'Творог 5%, 100 г', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 108.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c14', date: '2026-08-13', product: 'Творог 5%, 180 г', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 108.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c15', date: '2026-08-13', product: 'Арахисовая паста', supplier: 'ВкусВилл', category: 'Крупы и бакалея', price: 186.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c16', date: '2026-08-13', product: 'Изделие цельнозерновое без муки «Житный»', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 86.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c17', date: '2026-08-13', product: 'Сыр «Моцарелла» без лактозы, 200 г', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 303.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c18', date: '2026-08-13', product: 'Бородинский хлеб безглютеновый, 270 г', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 92.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c19', date: '2026-08-13', product: 'Бананы, 0,81 кг', supplier: 'ВкусВилл', category: 'Овощи и фрукты', price: 136.08, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'u01', date: '2026-08-13', product: 'Расход без детализации — оплата QR', supplier: 'ТЦ «Левый Берег»', category: 'Без детализации', price: 215.00, source: 'Оплата QR', detailLevel: 'undetailed' },
+    { id: 'u02', date: '2026-08-13', product: 'Расход без детализации — приход', supplier: 'Рынок «Левый Берег»', category: 'Без детализации', price: 200.00, source: 'Кассовый чек', detailLevel: 'undetailed' },
+    { id: 'u03', date: '2026-08-13', product: 'Расход без детализации — банковский перевод', supplier: 'Получатель не указан в назначении', category: 'Без детализации', price: 475.00, source: 'Банковский перевод', detailLevel: 'undetailed' },
+    { id: 'u04', date: '2026-08-13', product: 'Расход без детализации — банковский перевод', supplier: 'Получатель: Эльнур Зияд Оглы Д.', category: 'Без детализации', price: 550.00, source: 'Банковский перевод', detailLevel: 'undetailed' },
+    { id: 'u05', date: '2026-08-13', product: 'Расход без детализации — банковский перевод', supplier: 'Получатель: Наталья Владимировна М.', category: 'Без детализации', price: 420.00, source: 'Банковский перевод', detailLevel: 'undetailed' },
+    { id: 'u06', date: '2026-08-13', product: 'Расход без детализации — оплата СБП', supplier: 'ИП Гейдаров Т.Э.', category: 'Без детализации', price: 1560.00, source: 'Оплата СБП', detailLevel: 'undetailed' },
+    { id: 'u07', date: '2026-08-13', product: 'Расход без детализации — банковский перевод', supplier: 'Получатель: Эльчин Сахиб Оглы Ш.', category: 'Без детализации', price: 6900.00, source: 'Банковский перевод', detailLevel: 'undetailed' }
+  ];
   let purchases = [];
   let supplierItems = [];
 
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
-    purchases = Array.isArray(saved) ? saved.filter(item => item && item.date && item.product && item.supplier && Number(item.price) > 0).map(item => ({ ...item, category: item.category || 'Прочее' })) : [];
+    purchases = Array.isArray(saved) ? saved.filter(item => item && item.date && item.product && item.supplier && Number(item.price) > 0).map(item => ({ ...item, category: item.category || 'Прочее', detailLevel: item.detailLevel || 'itemized', source: item.source || 'Вручную' })) : [];
   } catch (_) { purchases = []; }
+  const shouldImportReceipts = !purchases.some(item => item.id === 'c01');
   try {
     const saved = JSON.parse(localStorage.getItem(supplierStorageKey) || '[]');
     supplierItems = Array.isArray(saved) ? saved.filter(item => item && item.product && item.supplier && item.category && Number(item.price) > 0) : [];
@@ -752,6 +792,7 @@ a{color:inherit}
   };
   const save = () => localStorage.setItem(storageKey, JSON.stringify(purchases));
   const saveSupplierItems = () => localStorage.setItem(supplierStorageKey, JSON.stringify(supplierItems));
+  if (shouldImportReceipts) { purchases = [...importedPurchases, ...purchases]; save(); }
   const total = rows => rows.reduce((sum, item) => sum + Number(item.price), 0);
 
   function setPanel(name, updateHash = true) {
@@ -774,6 +815,8 @@ a{color:inherit}
   function render() {
     updateDateOptions();
     const allTotal = total(purchases);
+    const itemizedRows = purchases.filter(item => item.detailLevel !== 'undetailed');
+    const undetailedRows = purchases.filter(item => item.detailLevel === 'undetailed');
     const dates = purchases.map(item => item.date).sort();
     const filtered = dateFilter.value === 'all' ? purchases : purchases.filter(item => item.date === dateFilter.value);
     document.getElementById('period-total').textContent = currency.format(allTotal);
@@ -795,6 +838,10 @@ a{color:inherit}
     });
     document.getElementById('current-month-total').textContent = currency.format(total(currentMonthRows));
     document.getElementById('current-week-total').textContent = currency.format(total(currentWeekRows));
+    document.getElementById('itemized-total').textContent = currency.format(total(itemizedRows));
+    document.getElementById('undetailed-total').textContent = currency.format(total(undetailedRows));
+    document.getElementById('itemized-note').textContent = `${itemizedRows.length} товарных позиций`;
+    document.getElementById('undetailed-note').textContent = `${undetailedRows.length} операций без товарных строк`;
     document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
     document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
@@ -802,22 +849,22 @@ a{color:inherit}
     if (!filtered.length) {
       const row = document.createElement('tr');
       const cell = document.createElement('td');
-      cell.colSpan = 4;
+       cell.colSpan = 6;
       cell.className = 'empty-row';
       cell.textContent = purchases.length ? 'На выбранную дату позиций нет.' : 'Пока нет данных. Прикрепите чек в этом чате — после обработки позиции появятся здесь.';
       row.append(cell); tableBody.append(row); return;
     }
     filtered.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(item => {
       const row = document.createElement('tr');
-      [formatDate(item.date), item.product, item.supplier, currency.format(Number(item.price))].forEach(value => {
-        const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
-      });
+      [formatDate(item.date), item.product, item.supplier, item.category].forEach(value => { const cell = document.createElement('td'); cell.textContent = value; row.append(cell); });
+      const statusCell = document.createElement('td'); const status = document.createElement('span'); status.className = `expense-status${item.detailLevel === 'undetailed' ? ' expense-status--limited' : ''}`; status.textContent = item.detailLevel === 'undetailed' ? 'Нет деталей' : (item.source || 'Вручную'); statusCell.append(status); row.append(statusCell);
+      const priceCell = document.createElement('td'); priceCell.textContent = currency.format(Number(item.price)); row.append(priceCell);
       tableBody.append(row);
     });
   }
 
   function directoryRows() {
-    const fromPurchases = purchases.map(item => ({ supplier: item.supplier, product: item.product, category: item.category || 'Прочее', price: item.price, source: 'Из закупки' }));
+    const fromPurchases = purchases.filter(item => item.detailLevel !== 'undetailed').map(item => ({ supplier: item.supplier, product: item.product, category: item.category || 'Прочее', price: item.price, source: item.source || 'Из закупки' }));
     return [...fromPurchases, ...supplierItems];
   }
 
@@ -869,7 +916,7 @@ a{color:inherit}
     event.preventDefault();
     const price = Number(priceInput.value);
     if (!dateInput.value || !productInput.value.trim() || !supplierInput.value.trim() || !(price > 0)) return;
-    purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), category: categoryInput.value, price });
+    purchases.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, date: dateInput.value, product: productInput.value.trim(), supplier: supplierInput.value.trim(), category: categoryInput.value, price, source: 'Вручную', detailLevel: 'itemized' });
     save(); form.reset(); formStatus.textContent = 'Позиция добавлена в реестр и учтена в итогах за период.'; render();
   });
   supplierForm.addEventListener('submit', event => {
