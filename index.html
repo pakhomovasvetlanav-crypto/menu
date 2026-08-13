@@ -188,14 +188,18 @@ a{color:inherit}
     min-height: 44px;
     border: 1px solid transparent;
     border-radius: 11px;
-    background: transparent;
-    color: #6a4834;
-    cursor: pointer;
-    font: 700 .86rem/1.2 Inter, Arial, sans-serif;
+      background: transparent;
+      color: #6a4834;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      font: 700 .86rem/1.2 Inter, Arial, sans-serif;
     letter-spacing: .02em;
     transition: background .2s ease, color .2s ease, transform .2s ease;
   }
-  .dashboard-tab:hover { background: #f4e9d8; }
+    .dashboard-tab:hover { background: #f4e9d8; }
+    .dashboard-tab:focus-visible { outline: 3px solid rgba(108, 66, 45, .35); outline-offset: 2px; }
   .dashboard-tab[aria-selected="true"] {
     background: #6c422d;
     border-color: #6c422d;
@@ -818,12 +822,24 @@ a{color:inherit}
   if (newImportedRows.length) { purchases = [...newImportedRows, ...purchases]; save(); }
   const total = rows => rows.reduce((sum, item) => sum + Number(item.price), 0);
 
-  function setPanel(name, updateHash = true) {
-    const target = ['procurement', 'suppliers'].includes(name) ? name : 'menu';
-    Object.entries(panels).forEach(([key, panel]) => { panel.hidden = key !== target; });
-    tabs.forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.dashboardTab === target)));
-    if (updateHash) history.replaceState(null, '', target === 'menu' ? '#report-main' : `#${target}`);
-  }
+    function setPanel(name, updateHash = true) {
+      const target = Object.prototype.hasOwnProperty.call(panels, name) ? name : 'menu';
+      Object.entries(panels).forEach(([key, panel]) => {
+        if (!panel) return;
+        if (key === target) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      });
+      tabs.forEach(tab => {
+        const selected = tab.dataset.dashboardTab === target;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      if (updateHash) {
+        const hash = target === 'menu' ? '#report-main' : `#${target}`;
+        try { history.replaceState(null, '', hash); }
+        catch (_) { window.location.hash = hash; }
+      }
+    }
 
   function updateDateOptions() {
     const current = dateFilter.value || 'all';
@@ -932,7 +948,19 @@ a{color:inherit}
     });
   }
 
-  tabs.forEach(tab => tab.addEventListener('click', () => setPanel(tab.dataset.dashboardTab)));
+    function activateTab(event) {
+      const target = event.currentTarget && event.currentTarget.dataset.dashboardTab;
+      if (!target) return;
+      event.preventDefault();
+      setPanel(target);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', activateTab);
+      tab.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') activateTab(event);
+      });
+    });
   window.addEventListener('hashchange', () => setPanel(['#procurement', '#suppliers'].includes(location.hash) ? location.hash.slice(1) : 'menu', false));
   dateFilter.addEventListener('change', render);
   form.addEventListener('submit', event => {
