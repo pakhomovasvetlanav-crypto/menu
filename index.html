@@ -755,7 +755,9 @@ a{color:inherit}
     { id: 'c03', date: '2026-08-11', product: 'Сметана 20%, 380 г', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 160.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c04', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 750.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c05', date: '2026-08-11', product: 'Рыба', supplier: 'ООО «Кайто»', category: 'Рыба и морепродукты', price: 800.00, source: 'Из чека', detailLevel: 'itemized' },
-    { id: 'm01', date: '2026-08-11', product: 'Черешня', supplier: 'Поставщик не указан', category: 'Овощи и фрукты', price: 750.00, source: 'Без чека', detailLevel: 'itemized', supplierKnown: false },
+        { id: 'm01', date: '2026-08-11', product: 'Черешня', supplier: 'Поставщик не указан', category: 'Овощи и фрукты', price: 750.00, source: 'Без чека', detailLevel: 'itemized', supplierKnown: false },
+        { id: 'h01', date: '2026-08-11', product: 'Овощи — рукописный товарный чек', supplier: 'Поставщик не указан', category: 'Овощи и фрукты', price: 3550.00, source: 'Рукописный чек', detailLevel: 'undetailed', supplierKnown: false },
+        { id: 'h02', date: '2026-08-11', product: 'Мясо — рукописный товарный чек', supplier: 'Поставщик не указан', category: 'Мясо и птица', price: 950.00, source: 'Рукописный чек', detailLevel: 'undetailed', supplierKnown: false },
     { id: 's01', date: '2026-08-11', product: 'Арбуз', supplier: 'SPAR', category: 'Овощи и фрукты', price: 90.60, source: 'Из чека', detailLevel: 'itemized' },
     { id: 's02', date: '2026-08-11', product: 'Лук-порей SPAR', supplier: 'SPAR', category: 'Овощи и фрукты', price: 9.99, source: 'Из чека', detailLevel: 'itemized' },
     { id: 's03', date: '2026-08-11', product: 'Кунжут SPAR белый, 15 г', supplier: 'SPAR', category: 'Крупы и бакалея', price: 99.90, source: 'Из чека', detailLevel: 'itemized' },
@@ -820,10 +822,11 @@ a{color:inherit}
   const saveSupplierItems = () => localStorage.setItem(supplierStorageKey, JSON.stringify(supplierItems));
     // Данные из чеков являются исходными: при обновлении страницы заменяем только
     // ранее импортированные строки, а вручную добавленные пользователем сохраняем.
-    const importedIds = new Set(importedPurchases.map(item => item.id));
-    const existingImported = new Map(purchases.filter(item => importedIds.has(item.id)).map(item => [item.id, item]));
-    const importedChanged = importedPurchases.some(item => JSON.stringify(existingImported.get(item.id) || null) !== JSON.stringify(item));
-    const manualPurchases = purchases.filter(item => !importedIds.has(item.id));
+      const isImportedRecord = item => /^(?:c|s|u|m|h)\d+$/.test(String(item.id || ''));
+      const existingImported = new Map(purchases.filter(isImportedRecord).map(item => [item.id, item]));
+      const importedChanged = existingImported.size !== importedPurchases.length ||
+        importedPurchases.some(item => JSON.stringify(existingImported.get(item.id) || null) !== JSON.stringify(item));
+      const manualPurchases = purchases.filter(item => !isImportedRecord(item));
     if (importedChanged) {
       purchases = [...importedPurchases, ...manualPurchases];
       save();
