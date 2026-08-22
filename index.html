@@ -255,7 +255,16 @@ a{color:inherit}
   .expense-composition { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0 0 20px; }
   .expense-composition__item { padding: 13px 15px; border: 1px solid #eadbc9; border-radius: 12px; background: #fffaf2; color: #72503b; font: 700 .78rem/1.4 Inter,Arial,sans-serif; }
   .expense-composition__item strong { display: block; margin-top: 3px; color: #4d3020; font: 700 1.12rem/1.2 Georgia,'Times New Roman',serif; }
-  .expense-composition__item--limited { border-color: #e3c88e; background: #fff7e6; }
+   .expense-composition__item--limited { border-color: #e3c88e; background: #fff7e6; }
+   .reconciliation-card { margin: 0 0 20px; padding: 17px 18px; border: 1px solid #e3d2bd; border-radius: 14px; background: linear-gradient(135deg,#fffdf8 0%,#f8f1e7 100%); box-shadow: 0 7px 18px rgba(94,61,39,.05); }
+   .reconciliation-card h3 { margin: 0; color: #563522; font: 700 1.1rem/1.2 Georgia,'Times New Roman',serif; }
+   .reconciliation-card p { margin: 7px 0 0; color: #7c6150; font-size: .82rem; line-height: 1.5; }
+   .reconciliation-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 13px; }
+   .reconciliation-grid__item { padding: 11px 12px; border: 1px solid rgba(111,75,47,.12); border-radius: 10px; background: #fffdf9; }
+   .reconciliation-grid__item span { display:block; color:#8c6a55; font:800 .65rem/1.2 Inter,Arial,sans-serif; letter-spacing:.05em; text-transform:uppercase; }
+   .reconciliation-grid__item strong { display:block; margin-top:4px; color:#4d3020; font:700 1.05rem/1.2 Georgia,'Times New Roman',serif; }
+   .reconciliation-note { margin: 12px 0 0; padding: 10px 12px; border-left: 3px solid #9a6544; border-radius: 7px; background: #fff7e6; color: #72503b; font-size: .78rem; line-height: 1.45; }
+   .reconciliation-note strong { color:#563522; }
   .expense-status { display: inline-flex; align-items: center; width: max-content; padding: 4px 7px; border-radius: 999px; background: #e8f0e4; color: #506843; font: 800 .65rem/1 Inter,Arial,sans-serif; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
   .expense-status--limited { background: #f8e4bd; color: #81581c; }
   .form-status { min-height: 18px; margin: 0; color: #547040; font-size: .78rem; line-height: 1.35; }
@@ -274,6 +283,7 @@ a{color:inherit}
     .filter-row { display: grid; grid-template-columns: 1fr; align-items: stretch; }
      .date-expense { min-width: 0; }
      .expense-composition { grid-template-columns: 1fr; }
+     .reconciliation-grid { grid-template-columns: 1fr; }
   }
   /* Не позволяем широкой таблице расширять страницу на мобильных устройствах. */
   #procurement-panel,
@@ -364,71 +374,71 @@ a{color:inherit}
           <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>18 августа</strong></div><span class="date-chip">18.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Полента с курагой, французские гренки.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Сырники на кокосовой муке. Каша рисовая с вареньем.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Охотничий суп, дикий рис, говяжьи медальоны.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Овощной суп-пюре, лапша соба с говядиной по-азиатски.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Батат, хек со сливочной шапкой</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Оджахури, клюквенный морс, салат «Оземпик».</p></div>
     </div></div>
         </article><article class="day-card" data-week="2">
           <header class="day-card__head"><div><span class="day-name">Среда</span><strong>19 августа</strong></div><span class="date-chip">19.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Сырники(допы)</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Глазунья, свежие овощи, творожная запеканка.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Тайский суп с кокосовым молоком, рис гохан с курицей</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Холодник, брокколи и мини-морковь, рваное мясо.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Драники с мочанкой.</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Митболы в грибном соусе с гречкой, морс с облепихой.</p></div>
     </div></div>
         </article><article class="day-card" data-week="2">
           <header class="day-card__head"><div><span class="day-name">Четверг</span><strong>20 августа</strong></div><span class="date-chip">20.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Венские вафли, песто и вяленые томаты.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Шакшука с ржаным хлебом, цикорий, фрукты.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Сырный суп с курицей, брокколи и мини-морковью, рваное мясо.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Куриная классика, утка конфи с тушёной капустой.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Митболы с цукини и баклажаном</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Паста болоньезе, компот из сухофруктов, помидоры по-корейски.</p></div>
     </div></div>
         </article><article class="day-card" data-week="2">
           <header class="day-card__head"><div><span class="day-name">Пятница</span><strong>21 августа</strong></div><span class="date-chip">21.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Шакшука с ржаным хлебом</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Гранола с чиа, свежие фрукты, овощи.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Куриная классика, утка конфи с квашеной капустой.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Том-ям, картофель по-деревенски, стейк форели.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Паста Болоньезе</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Банош с индейкой, салат с тунцом.</p></div>
     </div></div>
         </article><article class="day-card" data-week="2">
           <header class="day-card__head"><div><span class="day-name">Суббота</span><strong>22 августа</strong></div><span class="date-chip">22.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Творожная запеканка с карамелизированным бананом.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Полента, зелёный смузи.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Том-ям, картофель по-деревенски, стейк из форели.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Тыквенный крем-суп, фаршированный перец.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Банош с индейкой</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Драники с мочанкой, салат с рукколой и грушей.</p></div>
     </div></div>
         </article></div>
     
@@ -445,57 +455,57 @@ a{color:inherit}
           <header class="day-card__head"><div><span class="day-name">Вторник</span><strong>25 августа</strong></div><span class="date-chip">25.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Гречневые хлопья, свежие фрукты</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Авокадо-тост, творог с вареньем.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Кабачковый крем-суп, фаршированный перец.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Гороховый супчик, индейка в апельсиново-имбирном соусе.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Чахохбили</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Курица терияки с рисом, цитрусовый морс, винегрет.</p></div>
     </div></div>
         </article><article class="day-card" data-week="3">
           <header class="day-card__head"><div><span class="day-name">Среда</span><strong>26 августа</strong></div><span class="date-chip">26.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Овощная кесадилья со скрэмблом.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Кесадилья овощная со скрэмблом, свежие фрукты.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Лохикейтто, ленивые отбивные.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Харчо, эскалоп с зелёной гречкой.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Фалафель с соусом дзадзики.</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Фалафель с соусом дзадзики, греческий салат, квас.</p></div>
     </div></div>
         </article><article class="day-card" data-week="3">
           <header class="day-card__head"><div><span class="day-name">Четверг</span><strong>27 августа</strong></div><span class="date-chip">27.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Суфле-панкейки.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Суфле-панкейки, бриошь с беконом и пашотом.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Тыквенный крем-суп, котлеты с сыром.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Щи, котлеты по-киевски с чечевицей.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Кюфте с картофельным пюре.</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Кюфте с картофельным пюре, тропический лимонад, «Цезарь» с креветками.</p></div>
     </div></div>
         </article><article class="day-card" data-week="3">
           <header class="day-card__head"><div><span class="day-name">Пятница</span><strong>28 августа</strong></div><span class="date-chip">28.08</span></header>
           <div class="meal-list"><div class="meal meal--morning">
       <span class="meal-icon" aria-hidden="true">☀</span>
-      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Смузи-боул с бананом и ягодами.</p></div>
+      <div class="meal-content"><span class="meal-label">Завтрак</span><p>Смузи-боул с бананом и ягодами, гренки с сыром и зеленью.</p></div>
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Рассольник, говяжий гуляш с рисом басмати.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Том-ям, гуляш говяжий с рисом басмати.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Запечённая треска с овощами.</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Запечённая треска с овощами, лимонад «Грейпфрутовый», ассорти фруктов.</p></div>
     </div></div>
         </article><article class="day-card" data-week="3">
           <header class="day-card__head"><div><span class="day-name">Суббота</span><strong>29 августа</strong></div><span class="date-chip">29.08</span></header>
@@ -505,11 +515,11 @@ a{color:inherit}
     </div>
 <div class="meal meal--daytime">
       <span class="meal-icon" aria-hidden="true">◒</span>
-      <div class="meal-content"><span class="meal-label">Обед</span><p>Ревифья, гребешок и кальмар со спаржей.</p></div>
+      <div class="meal-content"><span class="meal-label">Обед</span><p>Ревифья, гребешок и кальмар с нутом.</p></div>
     </div>
 <div class="meal meal--evening">
       <span class="meal-icon" aria-hidden="true">☾</span>
-      <div class="meal-content"><span class="meal-label">Ужин</span><p>Вителло тоннато из телятины, салат-микс (вишнёвая заправка).</p></div>
+      <div class="meal-content"><span class="meal-label">Ужин</span><p>Плов с бараниной, салат-микс с вишнёвой заправкой, клюквенный морс.</p></div>
     </div></div>
         </article></div>
     
@@ -534,16 +544,27 @@ a{color:inherit}
       </section>
 
       <section class="procurement-kpis" aria-label="Итоги расходов за период">
-         <article class="procurement-kpi"><span>Расходы за период</span><strong id="period-total">0 ₽</strong></article>
+          <article class="procurement-kpi"><span>Фактические расходы за период</span><strong id="period-total">0 ₽</strong></article>
          <article class="procurement-kpi"><span>Расходы за текущий месяц</span><strong id="current-month-total">0 ₽</strong></article>
          <article class="procurement-kpi"><span>Расходы за текущую неделю</span><strong id="current-week-total">0 ₽</strong></article>
       </section>
-      <section class="expense-composition" aria-label="Качество детализации расходов">
-        <article class="expense-composition__item"><span>С детализацией по товарам</span><strong id="itemized-total">0 ₽</strong><span id="itemized-note">0 товарных позиций</span></article>
-        <article class="expense-composition__item expense-composition__item--limited"><span>Расход без детализации</span><strong id="undetailed-total">0 ₽</strong><span id="undetailed-note">0 операций без товарных строк</span></article>
-      </section>
+       <section class="expense-composition" aria-label="Качество детализации расходов">
+         <article class="expense-composition__item"><span>С детализацией по товарам</span><strong id="itemized-total">0 ₽</strong><span id="itemized-note">0 товарных позиций</span></article>
+         <article class="expense-composition__item expense-composition__item--limited"><span>Расход без детализации</span><strong id="undetailed-total">0 ₽</strong><span id="undetailed-note">0 операций без товарных строк</span></article>
+       </section>
 
-      <section class="procurement-layout">
+       <section class="reconciliation-card" aria-label="Сверка чеков и накладных">
+         <h3>Сверка чеков и накладных</h3>
+         <p>Фактический расход включает все учтённые покупки, переводы и платежи. Суммы без товарных строк не участвуют в сравнении цен поставщиков.</p>
+         <div class="reconciliation-grid">
+           <div class="reconciliation-grid__item"><span>Фактический расход</span><strong id="reconciliation-actual-total">0 ₽</strong></div>
+           <div class="reconciliation-grid__item"><span>По товарам и накладным</span><strong id="reconciliation-itemized-total">0 ₽</strong></div>
+           <div class="reconciliation-grid__item"><span>Без товарных строк</span><strong id="reconciliation-undetailed-total">0 ₽</strong></div>
+         </div>
+         <p class="reconciliation-note" id="reconciliation-note">Проверяем сверку документов…</p>
+       </section>
+
+       <section class="procurement-layout">
         <article class="procurement-card">
           <h3>Добавить позицию</h3>
            <p>Вносите корректировки вручную после обработки чека в этом чате. Одна строка — один продукт или товарная позиция.</p>
@@ -794,6 +815,70 @@ a{color:inherit}
     { id: 'c17', date: '2026-08-13', product: 'Сыр «Моцарелла» без лактозы, 200 г', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 303.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c18', date: '2026-08-13', product: 'Бородинский хлеб безглютеновый, 270 г', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 92.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c19', date: '2026-08-13', product: 'Бананы, 0,81 кг', supplier: 'ВкусВилл', category: 'Овощи и фрукты', price: 136.08, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c20', date: '2026-08-15', product: 'Пакет-майка «ВкусВилл», малый', supplier: 'ВкусВилл', category: 'Прочее', price: 8.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c21', date: '2026-08-15', product: 'Томаты черри красные на ветке, 250 г', supplier: 'ВкусВилл', category: 'Овощи и фрукты', price: 220.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c22', date: '2026-08-15', product: 'Салат шпинат, 125 г', supplier: 'ВкусВилл', category: 'Овощи и фрукты', price: 198.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c23', date: '2026-08-15', product: 'Хлебцы кукурузно-рисовые с прованскими травами, безглютеновые × 2', supplier: 'ВкусВилл', category: 'Хлеб и выпечка', price: 266.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c24', date: '2026-08-15', product: 'Йогурт греческий безлактозный 4% × 2', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 160.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c25', date: '2026-08-15', product: 'Шницель из индейки, 500 г × 2', supplier: 'ВкусВилл', category: 'Мясо и птица', price: 1020.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c26', date: '2026-08-15', product: 'Сыр «Пармезан» 45%, 200 г', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 402.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c27', date: '2026-08-15', product: 'Сливки безлактозные ультрапастеризованные 10%, 200 мл', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 98.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c28', date: '2026-08-15', product: 'Творог безлактозный высокобелковый обезжиренный, 200 г × 3', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 525.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c29', date: '2026-08-19', product: 'Масло кунжутное нерафинированное, 250 мл', supplier: 'Пятёрочка', category: 'Крупы и бакалея', price: 339.99, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c30', date: '2026-08-19', product: 'Хлеб деревенский, 0,560 кг', supplier: 'ООО «Хлебный сомелье»', category: 'Хлеб и выпечка', price: 224.00, source: 'Из чека', detailLevel: 'itemized' },
+  { id: 'u10', date: '2026-08-18', product: 'Овощи и фрукты — оплата картой', supplier: 'Овощи и фрукты, Коммунарка', category: 'Овощи и фрукты', price: 3200.00, source: 'Платёжный слип', detailLevel: 'undetailed', supplierKnown: false },
+    { id: 'c31', date: '2026-08-20', product: 'Кольца кальмара командорского METRO CHEF, 500 г', supplier: 'METRO', category: 'Рыба и морепродукты', price: 869.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c32', date: '2026-08-20', product: 'Сливки ультрапастеризованные 20%, Брянский МК', supplier: 'METRO', category: 'Молочные продукты', price: 379.01, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c33', date: '2026-08-20', product: 'Мякоть кокосового ореха Aroy-D', supplier: 'METRO', category: 'Овощи и фрукты', price: 409.01, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c34', date: '2026-08-20', product: 'Мякоть помидора, 500 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 249.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c35', date: '2026-08-20', product: 'Молоко сгущённое Рогачёв, 380 г', supplier: 'METRO', category: 'Молочные продукты', price: 132.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c36', date: '2026-08-20', product: 'Томаты черри жёлтые, 250 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 179.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c37', date: '2026-08-20', product: 'Соль морская METRO CHEF, 1 кг', supplier: 'METRO', category: 'Крупы и бакалея', price: 129.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c38', date: '2026-08-20', product: 'Салат мини-шпинат, 125 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 149.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c39', date: '2026-08-20', product: 'Салат месклам, 125 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 149.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c40', date: '2026-08-20', product: 'Салат руккола METRO CHEF, 125 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 129.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c41', date: '2026-08-20', product: 'Мандарины, 0,802 кг', supplier: 'METRO', category: 'Овощи и фрукты', price: 159.60, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c42', date: '2026-08-20', product: 'Грейпфрут, 0,776 кг', supplier: 'METRO', category: 'Овощи и фрукты', price: 107.86, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c43', date: '2026-08-20', product: 'Груша Аббат, 0,576 кг', supplier: 'METRO', category: 'Овощи и фрукты', price: 206.78, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c44', date: '2026-08-20', product: 'Тунец Maguro в оливковом масле, 200 г', supplier: 'METRO', category: 'Рыба и морепродукты', price: 279.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c45', date: '2026-08-20', product: 'Тимьян, 50 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 169.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c46', date: '2026-08-20', product: 'Розмарин, 50 г', supplier: 'METRO', category: 'Овощи и фрукты', price: 99.90, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c47', date: '2026-08-20', product: 'Картофель молодой, 1,534 кг', supplier: 'METRO', category: 'Овощи и фрукты', price: 51.99, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c48', date: '2026-08-20', product: 'Ананас, 1,938 кг', supplier: 'METRO', category: 'Овощи и фрукты', price: 443.60, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c49', date: '2026-08-20', product: 'Ванилин Dr. Bakers карамельный, 2 г × 2', supplier: 'METRO', category: 'Крупы и бакалея', price: 39.80, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c50', date: '2026-08-20', product: 'Пакет-майка METRO CHEF', supplier: 'METRO', category: 'Прочее', price: 10.89, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'u11', date: '2026-08-20', product: 'Нераспознанная разница по чеку METRO', supplier: 'METRO', category: 'Без детализации', price: 0.20, source: 'Из чека', detailLevel: 'undetailed' },
+    { id: 'c51', date: '2026-08-18', product: 'Пакет', supplier: 'ВкусВилл', category: 'Прочее', price: 8.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c52', date: '2026-08-18', product: 'Молоко безлактозное ультрапастеризованное 1,5%, 970 мл', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 156.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c53', date: '2026-08-18', product: 'Молоко безлактозное ультрапастеризованное 1,5%, 970 мл', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 156.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c54', date: '2026-08-18', product: 'Напиток растительный кокосовый, 1 л × 2', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 344.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c55', date: '2026-08-18', product: 'Яйцо куриное С2 × 2', supplier: 'ВкусВилл', category: 'Мясо и птица', price: 208.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c56', date: '2026-08-18', product: 'Вода минеральная «Нарзан» газированная, 1 л', supplier: 'ВкусВилл', category: 'Напитки', price: 89.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c57', date: '2026-08-18', product: 'Сливки безлактозные 10%, 200 мл', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 98.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c58', date: '2026-08-18', product: 'Сливки безлактозные 10%, 200 мл', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 98.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c59', date: '2026-08-18', product: 'Творог 5%, 180 г × 2', supplier: 'ВкусВилл', category: 'Молочные продукты', price: 216.00, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c60', date: '2026-08-18', product: 'Говядина: грудинка, 0,608 кг', supplier: 'МясоСорти', category: 'Мясо и птица', price: 395.50, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c61', date: '2026-08-18', product: 'Говядина: мякоть, 2,234 кг', supplier: 'МясоСорти', category: 'Мясо и птица', price: 1788.32, source: 'Из чека', detailLevel: 'itemized' },
+    { id: 'c62', date: '2026-08-20', product: 'Полента «крупа кукурузная» 400 г, Гудвилл ×3', supplier: 'Ozon', category: 'Крупы и бакалея', price: 305.04, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c63', date: '2026-08-20', product: 'Крупа из сорго цельная без глютена, 1 кг, Sorgik', supplier: 'Ozon', category: 'Крупы и бакалея', price: 243.34, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c64', date: '2026-08-20', product: 'Гранола BIONOVA ореховая без сахара, 400 г', supplier: 'Ozon', category: 'Крупы и бакалея', price: 358.49, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c65', date: '2026-08-20', product: 'Мука гречневая Гарнец 3 × 500 г', supplier: 'Ozon', category: 'Крупы и бакалея', price: 443.35, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c66', date: '2026-08-20', product: 'Хлебцы амарантовые без глютена ассорти, 3 × 200 г, Dr.AMARANTH', supplier: 'Ozon', category: 'Крупы и бакалея', price: 533.67, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c67', date: '2026-08-20', product: 'Амарант: семена, крупа амарантовая, 1 кг', supplier: 'Ozon', category: 'Крупы и бакалея', price: 488.56, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c68', date: '2026-08-20', product: 'Рис Gran Gallo Арборио, 500 г', supplier: 'Ozon', category: 'Крупы и бакалея', price: 327.47, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c69', date: '2026-08-20', product: 'Сироп топинамбура натуральный без сахара, 300 мл / 400 г', supplier: 'Ozon', category: 'Крупы и бакалея', price: 199.39, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c70', date: '2026-08-20', product: 'Гранола BIONOVA шоколадная, 400 г', supplier: 'Ozon', category: 'Крупы и бакалея', price: 347.11, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c71', date: '2026-08-20', product: 'Мюсли с орехами без глютена и сахара, 500 г, Эколина', supplier: 'Ozon', category: 'Крупы и бакалея', price: 525.76, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c72', date: '2026-08-20', product: 'Закваска сухая для кваса ржаная с солодом, PolyFood', supplier: 'Ozon', category: 'Крупы и бакалея', price: 167.67, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c73', date: '2026-08-20', product: 'Овсяные хлопья «Геркулес» без глютена, 375 г ×2', supplier: 'Ozon', category: 'Крупы и бакалея', price: 329.68, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+    { id: 'c74', date: '2026-08-20', product: 'Солод ржаной ферментированный, молотый, 300 г, С.Пудовъ', supplier: 'Ozon', category: 'Крупы и бакалея', price: 95.48, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+{ id: 'c75', date: '2026-08-20', product: 'Молоко безлактозное 1,8%, 1 л ×12, Parmalat Comfort', supplier: 'Ozon', category: 'Молочные продукты', price: 1589.07, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+{ id: 'c76', date: '2026-08-20', product: 'Курьерская доставка', supplier: 'Ozon', category: 'Прочее', price: 199.92, source: 'Из чека', detailLevel: 'itemized', supplierKnown: false },
+{ id: 'c77', date: '2026-08-18', product: 'Филе индейки', supplier: 'Фуд Сити', category: 'Мясо и птица', price: 280.00, source: 'Товарная накладная', detailLevel: 'itemized' },
+{ id: 'c78', date: '2026-08-18', product: 'Филе куриное', supplier: 'Фуд Сити', category: 'Мясо и птица', price: 344.00, source: 'Товарная накладная', detailLevel: 'itemized' },
+{ id: 'u12', date: '2026-08-18', product: 'Окорок утиный', supplier: 'Фуд Сити', category: 'Мясо и птица', price: 1260.00, source: 'Товарные накладные — сумма по позиции не указана', detailLevel: 'undetailed', supplierKnown: true },
+{ id: 'u13', date: '2026-08-18', product: 'Товарная накладная — без детализации №1', supplier: 'Фуд Сити', category: 'Без детализации', price: 3800.00, source: 'Товарная накладная — сумма по позициям не указана', detailLevel: 'undetailed', supplierKnown: true },
+{ id: 'u14', date: '2026-08-18', product: 'Товарная накладная — без детализации №2', supplier: 'Фуд Сити', category: 'Без детализации', price: 1900.00, source: 'Товарная накладная — сумма по позициям не указана', detailLevel: 'undetailed', supplierKnown: true },
     { id: 'u08', date: '2026-08-13', product: 'Овощи и фрукты — оплата QR', supplier: 'OVOSHNI I FRUKTY_P_QR, Химки', category: 'Овощи и фрукты', price: 1188.00, source: 'Банковская справка', detailLevel: 'undetailed', supplierKnown: false },
     { id: 'u09', date: '2026-08-13', product: 'Расход без детализации — банковский перевод', supplier: 'Получатель: Ахмаджон П. Х.', category: 'Без детализации', price: 234.00, source: 'Банковский перевод', detailLevel: 'undetailed', supplierKnown: false },
     { id: 'u01', date: '2026-08-13', product: 'Расход без детализации — оплата QR', supplier: 'ТЦ «Левый Берег»', category: 'Без детализации', price: 215.00, source: 'Оплата QR', detailLevel: 'undetailed' },
@@ -894,6 +979,17 @@ a{color:inherit}
     document.getElementById('undetailed-total').textContent = currency.format(total(undetailedRows));
     document.getElementById('itemized-note').textContent = `${itemizedRows.length} товарных позиций`;
     document.getElementById('undetailed-note').textContent = `${undetailedRows.length} операций без товарных строк`;
+    const invoiceLineTotal = total(purchases.filter(item => item.id === 'c77' || item.id === 'c78'));
+    const duckExpense = purchases.find(item => item.id === 'u12');
+    document.getElementById('reconciliation-actual-total').textContent = currency.format(allTotal);
+    document.getElementById('reconciliation-itemized-total').textContent = currency.format(total(itemizedRows));
+    document.getElementById('reconciliation-undetailed-total').textContent = currency.format(total(undetailedRows));
+    document.getElementById('reconciliation-note').textContent =
+      `Сверка накладной «Фуд Сити»: филе индейки ${currency.format(280)} + филе куриное ${currency.format(344)} = ${currency.format(invoiceLineTotal)}. ` +
+      (duckExpense
+        ? `Окорок утиный ${currency.format(duckExpense.price)} включён в фактический расход по данным пользователя; в накладной сумма по строке не указана, поэтому строка отмечена без детализации. `
+        : '') +
+      `Дополнительно добавлены две товарные накладные без детализации: ${currency.format(3800)} + ${currency.format(1900)} = ${currency.format(5700)}.`;
     document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
     document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
