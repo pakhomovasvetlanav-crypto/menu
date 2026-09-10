@@ -677,7 +677,11 @@ a{color:inherit}
   const supplierTableBody = document.getElementById('supplier-table-body');
   const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 2 });
   const dateFormat = new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
-  const importedPurchases = [
+const importedPurchases = [
+  {"id":"c181","date":"2026-09-09","product":"Клубника, 1,5 кг","supplier":"Фуд Сити","category":"Овощи и фрукты","price":1050.00,"source":"Банковский перевод СберБанк; состав подтверждён пользователем","detailLevel":"undetailed","supplierKnown":true},
+  {"id":"c182","date":"2026-09-09","product":"Малина, 1 кг","supplier":"Фуд Сити","category":"Овощи и фрукты","price":2000.00,"source":"Банковский перевод СберБанк; состав подтверждён пользователем","detailLevel":"undetailed","supplierKnown":true},
+  {"id":"c183","date":"2026-09-09","product":"Манго и папайя","supplier":"Фуд Сити","category":"Овощи и фрукты","price":1200.00,"source":"Банковский перевод СберБанк; состав подтверждён пользователем","detailLevel":"undetailed","supplierKnown":true},
+  {"id":"c184","date":"2026-09-09","product":"Томаты черри, 1 кг","supplier":"Фуд Сити","category":"Овощи и фрукты","price":300.00,"source":"Банковский перевод СБП; состав подтверждён пользователем","detailLevel":"undetailed","supplierKnown":true},
     { id: 'c01', date: '2026-08-11', product: 'Сыр «Уайт Найт» 45%', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 300.80, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c02', date: '2026-08-11', product: 'Горчица столовая', supplier: 'ИП Тарасов Денис Иванович', category: 'Крупы и бакалея', price: 65.00, source: 'Из чека', detailLevel: 'itemized' },
     { id: 'c03', date: '2026-08-11', product: 'Сметана 20%, 380 г', supplier: 'ИП Тарасов Денис Иванович', category: 'Молочные продукты', price: 160.00, source: 'Из чека', detailLevel: 'itemized' },
