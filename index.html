@@ -472,22 +472,23 @@ a{color:inherit}
        </section>
 
         <section class="reconciliation-card" id="ozon110x-docs" aria-labelledby="ozon110x-title">
-          <h3 id="ozon110x-title">Пять чеков Ozon: по документам 9 715,00 ₽, оплачено 6 271,00 ₽</h3>
+           <h3 id="ozon110x-title">Шесть чеков Ozon: по документам 11 120,00 ₽, оплачено 7 676,00 ₽</h3>
           <p>Суммы чеков показываем полностью. Зачёт аванса — закрытие ранее внесённой оплаты, а не новое списание. Три зачёта на 3 444 ₽ закрыли предоплату № 1112 от 4 ноября.</p>
-          <div class="purchase-table-wrap" style="margin-top:12px" tabindex="0" role="region" aria-label="Пять документов Ozon">
+           <div class="purchase-table-wrap" style="margin-top:12px" tabindex="0" role="region" aria-label="Шесть документов Ozon">
             <table class="purchase-table" style="min-width: 540px">
               <thead><tr><th scope="col">Дата</th><th scope="col">Чек и вид расчёта</th><th scope="col">По чеку</th><th scope="col">Новая оплата</th></tr></thead>
               <tbody>
                 <tr><td>04.11.2026</td><td>№ 1112 · Предоплата, полностью зачтена<br><small>IMG_1108.png</small></td><td>3 444,00 ₽</td><td>3 444,00 ₽</td></tr>
                 <tr><td>05.11.2026</td><td>№ 416 · Зачёт аванса<br><small>IMG_1106.png</small></td><td>1 969,00 ₽</td><td>0,00 ₽</td></tr>
                 <tr><td>06.11.2026</td><td>№ 328 · Зачёт аванса<br><small>IMG_1105.png</small></td><td>409,00 ₽</td><td>0,00 ₽</td></tr>
-                <tr><td>07.11.2026</td><td>№ 3923 · Зачёт аванса<br><small>IMG_1103.png</small></td><td>1 066,00 ₽</td><td>0,00 ₽</td></tr>
-                <tr><td>Дата не видна</td><td>ФД 248546 · Предоплата<br><small>IMG_1107.png</small></td><td>2 827,00 ₽</td><td>2 827,00 ₽</td></tr>
+                 <tr><td>07.11.2026</td><td>№ 3923 · Зачёт аванса<br><small>IMG_1103.png</small></td><td>1 066,00 ₽</td><td>0,00 ₽</td></tr>
+                 <tr><td>25.11.2026</td><td>№ 1894 · Предоплата, зачёт не подтверждён<br><small>IMG_1109.png</small></td><td>1 405,00 ₽</td><td>1 405,00 ₽</td></tr>
+                 <tr><td>Дата не видна</td><td>ФД 248546 · Предоплата<br><small>IMG_1107.png</small></td><td>2 827,00 ₽</td><td>2 827,00 ₽</td></tr>
               </tbody>
-              <tfoot><tr><th scope="row" colspan="2">Итого</th><td><strong>9 715,00 ₽</strong></td><td><strong>6 271,00 ₽</strong></td></tr></tfoot>
+               <tfoot><tr><th scope="row" colspan="2">Итого</th><td><strong>11 120,00 ₽</strong></td><td><strong>7 676,00 ₽</strong></td></tr></tfoot>
             </table>
           </div>
-          <p>Зачтено из авансов: <strong>3 444,00 ₽</strong>. Дата второй предоплаты (2 827 ₽, ФД 248546) не видна, поэтому она учтена только в общем итоге.</p>
+           <p>Зачтено из авансов: <strong>3 444,00 ₽</strong>. Дата предоплаты на 2 827 ₽ (ФД 248546) не видна, поэтому она учтена только в общем итоге.</p>
         </section>
 
        <section class="procurement-layout">
@@ -7454,6 +7455,35 @@ const importedPurchases = [
   "documentKey": "foodcity-user-20261124-shrimp",
   "priceComparisonEligible": false,
   "source": "Сообщение пользователя: Фуд Сити, 24.11.2026 — креветки, 1 700 ₽ за покупку. Вес и количество не указаны, чек не приложен."
+},
+{
+  "id": "c463",
+  "date": "2026-11-25",
+  "product": "Предоплата Ozon № 1894 — хозяйственные товары и доставка",
+  "supplier": "Ozon",
+  "category": "Прочее",
+  "price": 1405,
+  "detailLevel": "undetailed",
+  "priceComparisonEligible": false,
+  "supplierKnown": true,
+  "sourceDocuments": ["IMG_1109.png"],
+  "documentKey": "ozon-prepayment-20261125-fd6483",
+  "documentNumber": "1894",
+  "fiscalDocumentNumber": "6483",
+  "documentTime": "15:42",
+  "dateBasis": "fiscal_receipt",
+  "amountBasis": "fiscal_prepayment",
+  "paymentConfirmed": true,
+  "paymentStage": "prepayment",
+  "paymentMethod": "cashless",
+  "documentLines": [
+    {"product": "Губки Clean cat ЛОФТ, чёрные, 10 шт.", "quantity": 1, "unitPrice": 122.82, "amount": 122.82},
+    {"product": "Мешки для мусора, 30 л, 70 шт.", "quantity": 1, "unitPrice": 212.13, "amount": 212.13},
+    {"product": "Бумажные полотенца Zemma Стандарт, 1/2 листа, 4 рулона", "quantity": 3, "unitPrice": 151.78, "amount": 455.34},
+    {"product": "Пакеты для мусора прочные, 300 л, 10 шт.", "quantity": 2, "unitPrice": 209.37, "amount": 418.74},
+    {"product": "Доставка", "quantity": 1, "unitPrice": 195.97, "amount": 195.97}
+  ],
+  "source": "IMG_1109.png: чек Ozon № 1894 от 25.11.2026 15:42, ФД 6483. Безналичная предоплата 1 405 ₽: хозяйственные товары 1 209,03 ₽ и доставка 195,97 ₽. Получение товаров и зачёт аванса по этому чеку не подтверждены."
 }
 ];
   let purchases = [];
@@ -7612,6 +7642,7 @@ const remainingInvoiceIds = new Set(['u15', 'u16', 'u17', 'u18', 'u19', 'u20', '
       document.getElementById('reconciliation-note').textContent += " IMG_1107.png: Ozon, ФД 248546, предоплата безналичными 2 827 ₽, включая доставку 200,93 ₽. Дата и номер кассового чека не видны; учтено один раз только в общем итоге, без распределения по дням или месяцам. Предоплата не подтверждает получение товара. Три чека Ozon подтверждают полный расчёт зачётом аванса без нового списания: 05.11 — № 416 на 1 969 ₽ (IMG_1106), 06.11 — № 328 на 409 ₽ (IMG_1105), 07.11 — № 3923 на 1 066 ₽ (IMG_1103). Всего зачтено 3 444 ₽; не прибавлено к расходам. Все три зачёта сопоставлены с предоплатой Ozon № 1112 от 04.11.2026 (IMG_1108, ФД 187691) по составу, количествам, ценам и суммам доставки. Ранее предоплата на 3 444 ₽ не была учтена; она внесена один раз за 04.11.2026. Зачёты отдельно не начисляются. ";
       document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
      document.getElementById('reconciliation-note').textContent += " За 24.11.2026 по сообщению пользователя учтена покупка креветок у Фуд Сити на 1 700 ₽. Вес не указан, поэтому сумму не сравниваем с ценами за килограмм. ";
+     document.getElementById('reconciliation-note').textContent += " Чек Ozon № 1894 от 25.11.2026 (IMG_1109, ФД 6483): безналичная предоплата 1 405 ₽, из них 1 209,03 ₽ за товары и 195,97 ₽ за доставку. Итог учтён один раз. Чек не подтверждает получение товаров; при зачёте аванса повторного расхода нет. ";
      document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
     tableBody.replaceChildren();
