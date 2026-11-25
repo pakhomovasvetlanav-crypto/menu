@@ -7439,6 +7439,21 @@ const importedPurchases = [
     }
   ],
   "source": "IMG_1108.png: безналичная предоплата 3 444 ₽ от 04.11.2026 10:37. Все три зачёта сопоставлены с предоплатой Ozon № 1112 от 04.11.2026 (IMG_1108, ФД 187691) по составу, количествам, ценам и суммам доставки. Ранее предоплата на 3 444 ₽ не была учтена; она внесена один раз за 04.11.2026. Зачёты отдельно не начисляются."
+},
+{
+  "id": "c462",
+  "date": "2026-11-24",
+  "product": "Креветки",
+  "supplier": "Фуд Сити",
+  "category": "Рыба и морепродукты",
+  "price": 1700,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "amountBasis": "user_message",
+  "dateBasis": "user_message",
+  "documentKey": "foodcity-user-20261124-shrimp",
+  "priceComparisonEligible": false,
+  "source": "Сообщение пользователя: Фуд Сити, 24.11.2026 — креветки, 1 700 ₽ за покупку. Вес и количество не указаны, чек не приложен."
 }
 ];
   let purchases = [];
@@ -7596,7 +7611,8 @@ const remainingInvoiceIds = new Set(['u15', 'u16', 'u17', 'u18', 'u19', 'u20', '
       document.getElementById('reconciliation-note').textContent += " ВкусВилл, чек № 24 (ФД 11197, IMG_1099) от 25.11.2026 11:25: добавлены семь товарных строк на 829 ₽, безналичный полный расчёт. Две строки томатной пасты по 64 ₽ — две упаковки в одном чеке. Итог и оплату отдельно не начисляем. Это отдельная покупка, не относящаяся к заказу ВкусВилла на 1 686,56 ₽ от 20.11. ";
       document.getElementById('reconciliation-note').textContent += " IMG_1107.png: Ozon, ФД 248546, предоплата безналичными 2 827 ₽, включая доставку 200,93 ₽. Дата и номер кассового чека не видны; учтено один раз только в общем итоге, без распределения по дням или месяцам. Предоплата не подтверждает получение товара. Три чека Ozon подтверждают полный расчёт зачётом аванса без нового списания: 05.11 — № 416 на 1 969 ₽ (IMG_1106), 06.11 — № 328 на 409 ₽ (IMG_1105), 07.11 — № 3923 на 1 066 ₽ (IMG_1103). Всего зачтено 3 444 ₽; не прибавлено к расходам. Все три зачёта сопоставлены с предоплатой Ozon № 1112 от 04.11.2026 (IMG_1108, ФД 187691) по составу, количествам, ценам и суммам доставки. Ранее предоплата на 3 444 ₽ не была учтена; она внесена один раз за 04.11.2026. Зачёты отдельно не начисляются. ";
       document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
-    document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
+     document.getElementById('reconciliation-note').textContent += " За 24.11.2026 по сообщению пользователя учтена покупка креветок у Фуд Сити на 1 700 ₽. Вес не указан, поэтому сумму не сравниваем с ценами за килограмм. ";
+     document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
     tableBody.replaceChildren();
     if (!filtered.length) {
