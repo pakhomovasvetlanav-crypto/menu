@@ -7544,6 +7544,84 @@ const importedPurchases = [
   "documentKey": "foodcity-user-20261126-olives",
   "priceComparisonEligible": false,
   "source": "Сообщение пользователя: Фуд Сити, 26.11.2026 — оливки Каламата и крупные зелёные оливки, 1 950 ₽ вместе. Разбивка суммы, вес и количество не указаны."
+},
+{
+  "id": "c468",
+  "date": "2026-11-26",
+  "product": "Орехи и сухофрукты — общая сумма",
+  "supplier": "Фуд Сити",
+  "category": "Бакалея",
+  "price": 1100,
+  "documentTotal": 1100,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "documentKey": "foodcity-20261126-img1111",
+  "priceComparisonEligible": false,
+  "source": "IMG_1111.jpeg: товарный чек на 1 100 ₽, орехи и сухофрукты без разбивки. Поставщик и дата подтверждены сообщением; отдельного подтверждения оплаты нет."
+},
+{
+  "id": "c469",
+  "date": "2026-11-26",
+  "product": "Накладная на 3 000 ₽ — без расшифровки товара",
+  "supplier": "Фуд Сити",
+  "category": "Прочее",
+  "price": 3000,
+  "documentTotal": 3000,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "documentKey": "foodcity-20261126-img1112",
+  "priceComparisonEligible": false,
+  "source": "IMG_1112.jpeg: итог 3 000 ₽ по накладной и сообщению. Наименование и единица измерения не подтверждены. Дата учёта и поставщик — из сообщения; отдельного подтверждения оплаты нет."
+},
+{
+  "id": "c470",
+  "date": "2026-11-26",
+  "product": "Накладная «кур.»",
+  "supplier": "Фуд Сити",
+  "category": "Мясо и птица",
+  "price": 1194,
+  "documentTotal": 1194,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "documentKey": "foodcity-20261126-img1113",
+  "priceComparisonEligible": false,
+  "documentLines": [{"product":"кур.","qty":2.17,"unitPrice":550,"amount":1194}],
+  "source": "IMG_1113.jpeg: «кур.», количество 2,170, цена 550 ₽ без указанной единицы; 2,170 × 550 = 1 193,50 ₽, записанный и подтверждённый итог — 1 194 ₽. Поставщик из сообщения; отдельного подтверждения оплаты нет."
+},
+{
+  "id": "c471",
+  "date": "2026-11-26",
+  "product": "Овощи и фрукты — общая сумма по накладной",
+  "supplier": "Фуд Сити",
+  "category": "Овощи и фрукты",
+  "price": 10130,
+  "documentTotal": 10130,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "documentKey": "foodcity-20261126-img1114",
+  "priceComparisonEligible": false,
+  "source": "IMG_1114.jpeg: накладная на овощи и фрукты, 10 130 ₽ без разбивки. Поставщик и полная дата из сообщения; отдельного подтверждения оплаты нет."
+},
+{
+  "id": "c472",
+  "date": "unknown",
+  "product": "Сметана, хлеб и два вида киселя — чек ВкусВилла",
+  "supplier": "ВкусВилл",
+  "category": "Прочее",
+  "price": 488,
+  "documentTotal": 488,
+  "paidCash": 488,
+  "detailLevel": "itemized",
+  "supplierKnown": true,
+  "documentKey": "vkusvill-fd11181-check197154",
+  "priceComparisonEligible": false,
+  "documentLines": [
+    {"product":"Сметана 15% Вологодская, 300 г","qty":1,"unit":"шт","unitPrice":135,"amount":135},
+    {"product":"Хлеб Бородинский бездрожжевой, нарезка, 270 г","qty":1,"unit":"шт","unitPrice":95,"amount":95},
+    {"product":"Вишнёвый кисель, 30 г","qty":2,"unit":"шт","unitPrice":65,"amount":130},
+    {"product":"Кисель Чёрная смородина","qty":2,"unit":"шт","unitPrice":64,"amount":128}
+  ],
+  "source": "IMG_1116.jpeg: ВкусВилл, продажа № 197154, ФД 11181. Итог и оплата наличными — 488 ₽. 1 000 ₽ получено, 512 ₽ сдача; учитывается только итог. Полная дата срезана на фото."
 }
 ];
   let purchases = [];
@@ -7704,6 +7782,7 @@ const remainingInvoiceIds = new Set(['u15', 'u16', 'u17', 'u18', 'u19', 'u20', '
      document.getElementById('reconciliation-note').textContent += " За 24.11.2026 по сообщению пользователя учтена покупка креветок у Фуд Сити на 1 700 ₽. Вес не указан, поэтому сумму не сравниваем с ценами за килограмм. ";
      document.getElementById('reconciliation-note').textContent += " Чек Ozon № 1894 от 25.11.2026 (IMG_1109, ФД 6483): безналичная предоплата 1 405 ₽, из них 1 209,03 ₽ за товары и 195,97 ₽ за доставку. Итог учтён один раз. Чек не подтверждает получение товаров; при зачёте аванса повторного расхода нет. ";
      document.getElementById('reconciliation-note').textContent += " За 26.11.2026 по сообщению пользователя учтены четыре покупки Фуд Сити на 8 900 ₽. Гранадила с маракуйей и два вида оливок внесены по общей сумме на каждую группу, без распределения по товарам. Вес и количество не указаны; эти суммы не используются для сравнения цен. ";
+      document.getElementById('reconciliation-note').textContent += " Дополнение за 26.11.2026: четыре документа Фуд Сити на 15 424 ₽ учтены по итогам (1 100 + 3 000 + 1 194 + 10 130 ₽). Отдельные оплаты по накладным не подтверждены и не прибавлялись поверх их сумм. В IMG_1113 расчёт по строке даёт 1 193,50 ₽; внесён итог документа 1 194 ₽. Отдельный наличный чек ВкусВилла (IMG_1116, ФД 11181) на 488 ₽ включён только в общий итог: полная дата на фото срезана. По пяти документам 15 912 ₽, без повторного начисления товарных строк или оплаты.";
      document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
     tableBody.replaceChildren();
