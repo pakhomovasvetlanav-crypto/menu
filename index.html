@@ -339,7 +339,7 @@ a{color:inherit}
       <div class="header-right">
         <div class="header-meta">
       <div class="header-title">Меню и закупки</div>
-     <div class="header-sub">Меню: 22–26 сентября 2026 · закупки: 11 августа — 25 ноября 2026</div>
+      <div class="header-sub">Меню: 22–26 сентября 2026 · закупки: 11 августа — 26 ноября 2026</div>
         </div>
         <button class="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false">
           <span class="theme-toggle-icon" aria-hidden="true">☀</span>
@@ -7484,6 +7484,66 @@ const importedPurchases = [
     {"product": "Доставка", "quantity": 1, "unitPrice": 195.97, "amount": 195.97}
   ],
   "source": "IMG_1109.png: чек Ozon № 1894 от 25.11.2026 15:42, ФД 6483. Безналичная предоплата 1 405 ₽: хозяйственные товары 1 209,03 ₽ и доставка 195,97 ₽. Получение товаров и зачёт аванса по этому чеку не подтверждены."
+},
+{
+  "id": "c464",
+  "date": "2026-11-26",
+  "product": "Мочёные яблоки",
+  "supplier": "Фуд Сити",
+  "category": "Овощи и фрукты",
+  "price": 1000,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "amountBasis": "user_message",
+  "dateBasis": "user_message",
+  "documentKey": "foodcity-user-20261126-soaked-apples",
+  "priceComparisonEligible": false,
+  "source": "Сообщение пользователя: Фуд Сити, 26.11.2026 — мочёные яблоки, 1 000 ₽ за покупку. Вес и количество не указаны."
+},
+{
+  "id": "c465",
+  "date": "2026-11-26",
+  "product": "Гранадила и маракуйя — общая сумма",
+  "supplier": "Фуд Сити",
+  "category": "Овощи и фрукты",
+  "price": 3100,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "amountBasis": "user_message",
+  "dateBasis": "user_message",
+  "documentKey": "foodcity-user-20261126-granadilla-passionfruit",
+  "priceComparisonEligible": false,
+  "source": "Сообщение пользователя: Фуд Сити, 26.11.2026 — гранадила и маракуйя, 3 100 ₽ вместе. Разбивка суммы, вес и количество не указаны."
+},
+{
+  "id": "c466",
+  "date": "2026-11-26",
+  "product": "Баранья нога",
+  "supplier": "Фуд Сити",
+  "category": "Мясо и птица",
+  "price": 2850,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "amountBasis": "user_message",
+  "dateBasis": "user_message",
+  "documentKey": "foodcity-user-20261126-lamb-leg",
+  "priceComparisonEligible": false,
+  "source": "Сообщение пользователя: Фуд Сити, 26.11.2026 — баранья нога, 2 850 ₽ за покупку. Вес и количество не указаны."
+},
+{
+  "id": "c467",
+  "date": "2026-11-26",
+  "product": "Оливки Каламата и крупные зелёные оливки — общая сумма",
+  "supplier": "Фуд Сити",
+  "category": "Овощи и фрукты",
+  "price": 1950,
+  "detailLevel": "undetailed",
+  "supplierKnown": true,
+  "amountBasis": "user_message",
+  "dateBasis": "user_message",
+  "documentKey": "foodcity-user-20261126-olives",
+  "priceComparisonEligible": false,
+  "source": "Сообщение пользователя: Фуд Сити, 26.11.2026 — оливки Каламата и крупные зелёные оливки, 1 950 ₽ вместе. Разбивка суммы, вес и количество не указаны."
 }
 ];
   let purchases = [];
@@ -7643,6 +7703,7 @@ const remainingInvoiceIds = new Set(['u15', 'u16', 'u17', 'u18', 'u19', 'u20', '
       document.getElementById('procurement-period-label').textContent = dates.length ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : 'Нет данных';
      document.getElementById('reconciliation-note').textContent += " За 24.11.2026 по сообщению пользователя учтена покупка креветок у Фуд Сити на 1 700 ₽. Вес не указан, поэтому сумму не сравниваем с ценами за килограмм. ";
      document.getElementById('reconciliation-note').textContent += " Чек Ozon № 1894 от 25.11.2026 (IMG_1109, ФД 6483): безналичная предоплата 1 405 ₽, из них 1 209,03 ₽ за товары и 195,97 ₽ за доставку. Итог учтён один раз. Чек не подтверждает получение товаров; при зачёте аванса повторного расхода нет. ";
+     document.getElementById('reconciliation-note').textContent += " За 26.11.2026 по сообщению пользователя учтены четыре покупки Фуд Сити на 8 900 ₽. Гранадила с маракуйей и два вида оливок внесены по общей сумме на каждую группу, без распределения по товарам. Вес и количество не указаны; эти суммы не используются для сравнения цен. ";
      document.getElementById('selected-date-total').textContent = currency.format(total(filtered));
     renderSuppliers();
     tableBody.replaceChildren();
